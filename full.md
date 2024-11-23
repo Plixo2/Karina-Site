@@ -1,4 +1,4 @@
-<h1 align="center">Practical guide</h1>
+<h1 align="center">Karina Language</h1>
 
 
 <details open>

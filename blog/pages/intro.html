@@ -1,0 +1,55 @@
+<html>
+<script src="../../tailwind.js"></script>
+
+<body style="font-family: Verdana">
+
+    <div class="flex justify-center min-h-screen py-12 bg-gray-50">
+        <div class="max-w-7xl w-full p-6 bg-white shadow-md rounded-lg">
+            <article class="space-y-6">
+                <section>
+                    <h2 class="text-2xl font-semibold text-gray-800">Introduction</h2>
+                    <p class="text-sm text-gray-500">Posted on November 23, 2024 by Plixo</p>
+                    <p class="text-lg text-gray-700 mt-4">
+                        Over the last few years took some interest in Programming Languages. Now i put this Language
+                        together, from what
+                        i learned over many failed projects.
+                    </p>
+                    <p class="text-lg text-gray-700 mt-4">
+                        This blog is written as a source of information from what i wished i knew earlier and to show
+                        what i learned.
+                    </p>
+
+                    <p class="text-lg text-gray-700 mt-4">
+                        The first Language i did, was a Interpreted, but staticly typed one. I rewrote the Compiler to
+                        be self hostet,
+                        but
+                        eventually was limited by my knowledge and the old codebase without any LSP or assistance. The
+                        self hostet
+                        "Schematic" Code is still up.
+                    </p>
+
+                    <p class="text-lg text-gray-700 mt-4">
+                        So i decided to start new. This time the Compiler was written in Java.
+                        Self hosting still has to wait till i got an LSP up and running. I made the decision to make it
+                        compatible with the Java VM. That means compiling it to bytecode, witch was essentially the easy
+                        part. The more difficult part was the interaction between my language and existing jvm classes.
+                        I didn't implemented any Generics, as ASM didnt offer a parser for the java generic bytecode
+                        format. I eventually archived my goal tho, as i got ~90% of features with the jvm. This Language
+                        is probably the better to actually program in, as you got java support, operator overloading,
+                        extension functions, macros and other convenient functionality.
+                        Maybe i will come to this Language back again. The Source for "Stella" is also still up.
+                    </p>
+                </section>
+            </article>
+
+            <footer class="mt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 Plixo. All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
