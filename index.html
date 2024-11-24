@@ -1,134 +1,247 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karina Programming Language</title>
-    
-    <!-- <meta http-equiv="refresh" content="30" > -->
-    <script src="tailwind.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karina Programming Language</title>
+
+  <!-- <meta http-equiv="refresh" content="30" > -->
+  <script src="tailwind.js"></script>
 </head>
-<body>
-    
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                clifford: '#da373d',
-              }
-            }
-          }
-        }
-    </script>
 
-    <nav class="bg-blue-500 text-white fixed top-0 left-0 w-full shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-16">
-            <!-- Logo -->
-            <div class="flex-shrink-0">
-              <a href="#" class="text-xl font-bold">Karina</a>
-            </div>
-            <!-- fe8439 -->
-            <!-- Links -->
-            <div class="hidden md:flex space-x-4">
-              <a href="#services" class="hover:bg-blue-600 px-3 py-2 rounded">Get Started</a>
-              <a href="blog/blog.html" class="hover:bg-blue-600 px-3 py-2 rounded">Blog</a>
-              <a href="#about" class="hover:bg-blue-600 px-3 py-2 rounded">JVM Integration</a>
-              <a href="#contact" class="hover:bg-rose-600 bg-rose-500 px-3 py-2 rounded">Sponsor</a>
-            </div>
-    
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-              <button id="mobile-menu-button" class="focus:outline-none">
-                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-    
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-blue-500">
-          <a href="#home" class="block px-4 py-2 hover:bg-blue-600">Home</a>
-          <a href="#about" class="block px-4 py-2 hover:bg-blue-600">About</a>
-          <a href="#services" class="block px-4 py-2 hover:bg-blue-600">Services</a>
-          <a href="#contact" class="block px-4 py-2 hover:bg-blue-600">Contact</a>
-        </div>
-      </nav>
-    
+<body class="relative min-h-screen ">
 
-      <section id="home" class="h-screen bg-gray-200 flex items-center justify-center">
-        <div class="text-center">
-          <h1 class="text-5xl font-bold text-blue-500">Karina</h1>
-          <p class="text-lg text-gray-700 mt-4">A programming language designed code quality and iteration speed</p>
-          <button class="mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded hover:bg-blue-600">
-            Get Started
+  <nav class="bg-blue-500 text-white fixed top-0 left-0 w-full shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#" class="text-xl font-bold">Karina</a>
+        </div>
+        <!-- fe8439 -->
+        <!-- Links -->
+        <div class="hidden md:flex space-x-3">
+          <a href="#getstarted" class="hover:bg-blue-600 px-3 py-2 rounded-lg">Get Started</a>
+          <a href="blog/blog.html" class="hover:bg-blue-600 px-3 py-2 rounded-lg">Blog</a>
+          <a href="#about" class="hover:bg-blue-600 px-3 py-2 rounded-lg">JVM Integration</a>
+          <a href="#contact" class="hover:bg-rose-600 bg-rose-500 px-3 py-2 rounded-lg">Sponsor</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="focus:outline-none">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
           </button>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <section id="about" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-3xl font-bold text-center text-gray-800">Explore Our Features</h2>
-          <p class="text-center text-gray-600 mt-2">Everything you need to succeed, in one place.</p>
-      
-          <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Feature 1 -->
-            <div class="text-center p-6 border rounded shadow">
-              <div class="text-blue-500">
-                <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 11.25L12 13.5l2.25-2.25M9 9h6a3 3 0 013 3v6a3 3 0 01-3 3H9a3 3 0 01-3-3V9a3 3 0 013-3z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mt-4">Secure Platform</h3>
-              <p class="text-gray-600 mt-2">Your data is protected with the best practices in security.</p>
-            </div>
-            <!-- Feature 2 -->
-            <div class="text-center p-6 border rounded shadow">
-              <div class="text-blue-500">
-                <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mt-4">User-Friendly</h3>
-              <p class="text-gray-600 mt-2">Our platform is designed to be simple and easy to use.</p>
-            </div>
-            <!-- Feature 3 -->
-            <div class="text-center p-6 border rounded shadow">
-              <div class="text-blue-500">
-                <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h8M12 8v8m4 8H8a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v16a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold mt-4">Accessible Everywhere</h3>
-              <p class="text-gray-600 mt-2">Access your data from any device, anywhere in the world.</p>
-            </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-blue-500">
+      <!-- <a href="#home" class="block px-4 py-2 hover:bg-blue-600">Home</a> -->
+      <!-- <a href="#about" class="block px-4 py-2 hover:bg-blue-600">About</a> -->
+      <a href="#getstarted" class="block px-4 py-2 hover:bg-blue-600">Services</a>
+      <!-- <a href="#contact" class="block px-4 py-2 hover:bg-blue-600">Contact</a> -->
+    </div>
+  </nav>
+
+
+  <section id="home" class="relative h-screen flex items-center justify-center">
+
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-blue-500">Karina</h1>
+      <p class="text-lg text-gray-700 mt-4 max-w-96 bg-white p-1 rounded-full">A programming language designed for code
+        quality and iteration speed</p>
+      <button class="mt-6 px-6 py-3 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600"
+        onClick="window.location.href='#getstarted'">
+        Get Started
+      </button>
+
+
+    </div>
+  </section>
+
+
+  <div class="absolute inset-0 -z-10 bg-fixed bg-white text-black hidden sm:block">
+
+    <div class="h-full w-screen relative flex items-center justify-center"
+      style="background-image: url('img/bg.png'); ">
+    </div>
+
+  </div>
+
+
+  <section id="about" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center text-gray-800">Explore Our Features</h2>
+      <p class="text-center text-gray-600 mt-2">Everything you need to succeed, in one place.</p>
+
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6 border rounded shadow">
+          <div class="text-blue-500">
+            <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.75 11.25L12 13.5l2.25-2.25M9 9h6a3 3 0 013 3v6a3 3 0 01-3 3H9a3 3 0 01-3-3V9a3 3 0 013-3z" />
+            </svg>
           </div>
+          <h3 class="text-xl font-bold mt-4">Secure Platform</h3>
+          <p class="text-gray-600 mt-2">Your data is protected with the best practices in security.</p>
         </div>
-      </section>
+        <div class="text-center p-6 border rounded shadow">
+          <div class="text-blue-500">
+            <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mt-4">User-Friendly</h3>
+          <p class="text-gray-600 mt-2">Our platform is designed to be simple and easy to use.</p>
+        </div>
+        <div class="text-center p-6 border rounded shadow">
+          <div class="text-blue-500">
+            <svg class="w-12 h-12 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h8M12 8v8m4 8H8a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v16a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mt-4">Accessible Everywhere</h3>
+          <p class="text-gray-600 mt-2">Access your data from any device, anywhere in the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <section id="services" class="h-screen bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?nature');">
-        <div class="bg-black bg-opacity-50 h-full flex items-center justify-center">
-          <div class="text-center text-white">
-            <h1 class="text-4xl font-bold">Discover Amazing Places</h1>
-            <p class="mt-4 text-lg">Join us in exploring the world’s most stunning locations.</p>
-            <a href="#services" class="mt-6 inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded hover:bg-blue-600">
-              Learn More
+  <!-- <section id="getstarted" class="h-screen bg-cover bg-center"
+    style="background-image: url('https://picsum.photos/1000/500');">
+    <div class="bg-black bg-opacity-50 h-full flex items-center justify-center">
+      <div class="text-center text-white">
+        <h1 class="text-4xl font-bold">Discover Amazing Places</h1>
+        <p class="mt-4 text-lg">Join us in exploring the world’s most stunning locations.</p>
+        <a href="#services"
+          class="mt-6 inline-block px-6 py-3 bg-blue-500 text-white font-bold rounded hover:bg-blue-600">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section id="getstarted" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Install Karina</h2>
+      <p class="text-lg text-gray-600 mb-8">Follow these steps to get started.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Install</h3>
+          <p class="text-gray-600 mb-4">Move the Executable to your desired location and add it to your PATH.
+
+          </p>
+          <div class="flex flex-col">
+            <a href="#"
+              class="inline-block px-6 py-3 bg-blue-500 text-white text-lg font-medium rounded-lg shadow-md hover:bg-blue-600 transition">
+              Prebuilt binaries
+            </a>
+            <a href="#"
+              class="inline-block px-6 py-3 mt-4 bg-blue-500 text-white text-lg font-medium rounded-lg shadow-md hover:bg-blue-600 transition">
+              Source code
             </a>
           </div>
         </div>
-      </section>
 
-      <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-    
-        mobileMenuButton.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-        });
-      </script>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step 2: Install</h3>
+          <p class="text-gray-600 mb-4">Run the installer and follow the on-screen instructions.</p>
+          <ul class="list-inside list-disc text-gray-600 mb-4">
+            <li>Double-click the downloaded file.</li>
+            <li>Click "Install" and wait for the process to complete.</li>
+            <li>Once done, the software will be ready to use!</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step 3: Launch</h3>
+          <p class="text-gray-600 mb-4">Once installed, launch the software to start using it.</p>
+          <a href="#"
+            class="inline-block px-6 py-3 bg-green-500 text-white text-lg font-medium rounded-lg shadow-md hover:bg-green-600 transition">Open
+            Software</a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <section id="getstarted" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Karina Compiler</h2>
+      <p class="text-lg text-gray-600 mb-8">Choose your preferred installation method: precompiled binaries or source
+        code.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- First Component: Download Precompiled Binaries -->
+        <div class="bg-white p-6 rounded-lg shadow-lg justify-between">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Download Precompiled Binaries</h3>
+          <p class="text-gray-600 mb-4">If you'd like to avoid building the program yourself, you can download the
+            precompiled binaries.</p>
+          <a href="https://github.com/yourproject/release"
+            class="inline-block px-6 py-3 bg-blue-500 text-white text-lg font-medium rounded-lg shadow-md hover:bg-blue-600 transition">Download
+            Precompiled Binaries from GitHub</a>
+          <p class="text-gray-600 mt-4">Once downloaded, make sure to move the executable to a convenient location and
+            add it to your system's PATH.</p>
+          <p class="text-gray-600 mt-4">Test the installation by running:</p>
+          <pre class="bg-gray-200 p-3 text-sm text-gray-800 font-mono">karina --version</pre>
+        </div>
+
+        <!-- Second Component: Build from Source -->
+        <div class="bg-white p-6 rounded-lg shadow-lg justify-between">
+          <h3 class="text-2xl font-semibold text-gray-800 mb-4">Build from Source</h3>
+          <p class="text-gray-600 mb-4">If you'd prefer to build the program from source, you can download the source
+            code and compile it yourself.</p>
+          <a href="https://github.com/yourproject/source"
+            class="inline-block px-6 py-3 bg-green-500 text-white text-lg font-medium rounded-lg shadow-md hover:bg-green-600 transition">Download
+            Source Code from GitHub</a>
+          <p class="text-gray-600 mt-4">Follow the build instructions in the repository's README to get started with the
+            source code. After building, ensure that the executable is in a proper location and add it to your PATH.</p>
+        </div>
+      </div>
+
+      <!-- Third Component: Documentation (On a new row, full width, same height as first row) -->
+      <div class="bg-white p-6 rounded-lg shadow-lg mt-8 n min-h-[400px]">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Step 3: Read the Documentation</h3>
+        <p class="text-gray-600 mb-4">Once the installation is complete, we recommend reading the
+            Quick Start Guide
+          to get up and running with the language.
+        </p>
+
+        <a href="#quickstart"
+        class="inline-block px-6 py-3 bg-green-500 text-white text-lg font-medium rounded-lg shadow-md hover:bg-green-600 transition">
+        Quick Start Guide
+      </a>
+
+        <p class="text-gray-600 my-4 ">
+          The guide covers most concepts you will need. 
+          For more detailed information, refer to the   
+          <a href="blog/blog.html" class="text-blue-500 hover:underline">
+            Documentation
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
+
 </html>
