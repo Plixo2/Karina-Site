@@ -19,11 +19,6 @@ a>.hljs {
     text-decoration: underline;
 }
 
-.no_underline { 
-    text-decoration: none !important;
-    color: white !important;
-}
-
 
 #searchresults a:hover,
 .content a:link:hover,
@@ -34,10 +29,6 @@ a:hover > .hljs {
 }
 
 
-.no_underline:hover { 
-    color: white !important;
-    text-decoration: none !important;
-}
 
 
 /*

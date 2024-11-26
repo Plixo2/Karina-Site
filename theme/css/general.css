@@ -99,6 +99,17 @@ h6:target::before {
     transition: margin-right 0.3s ease, transform 0.3s ease; /* Animation: slide away */
 }
 
+
+.no_underline { 
+    text-decoration: none !important;
+    color: white !important;
+}
+.no_underline:hover { 
+    color: white !important;
+    text-decoration: none !important;
+}
+
+
 .content {
     overflow-y: auto;
     padding: 0 5px 50px 5px;
