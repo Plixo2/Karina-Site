@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Karina Programming Language
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-100">
+
+    <div class="flex w-full h-screen bg-neutral-950">
+        <div
+            class="w-16 bg-neutral-950 h-full hover:w-64 transition-all flex justify-between items-start flex-col group/sidebar ml-4">
+            <div class="flex flex-col justify-start items-start">
+                <div class="flex h-12 mt-4 flex-row">
+                    <img src="favicon.png" alt="Karina" class="w-12 h-12 mx-auto">
+                </div>
+
+                <div class="flex h-12 mt-10 flex-row items-center group/item">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-lg">
+                        <div>
+                            O
+                        </div>
+                    </div>
+
+                    <div
+                        class="group-hover/item:ml-1 transition-all group-hover/sidebar:text-neutral-200 text-transparent">
+                        <a href="#">Overview</a>
+                    </div>
+                </div>
+
+                <div class="flex h-12 mt-4 flex-row items-center group/item">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-lg">
+                        <div>
+                            D
+                        </div>
+                    </div>
+
+                    <div
+                        class="group-hover/item:ml-1 transition-all group-hover/sidebar:text-neutral-200 text-transparent">
+                        <a href="/Intro.html">Documentation</a>
+                    </div>
+                </div>
+
+                <div class="flex h-12 mt-4 flex-row items-center group/item">
+                    <div class="w-12 h-12 flex justify-center items-center rounded-lg">
+                        <div>
+                            P
+                        </div>
+                    </div>
+
+                    <div
+                        class="group-hover/item:ml-1 transition-all group-hover/sidebar:text-neutral-200 text-transparent">
+                        <a href="#">Playground</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <a href="#impressum"
+                    class="underline transition-all text-transparent group-hover/sidebar:text-neutral-500">
+                    impressum
+                </a>
+            </div>
+        </div>
+        <div
+            class="rounded-xl bg-black flex-1 border border-neutral-800 flex justify-between items-center flex-col overflow-auto">
+            <div id="content" class="w-full">
+                <div class="h-96  w-full">
+
+                </div>
+                <div class="h-96  w-full">
+
+                </div>
+                <div class="h-96  w-full ">
+
+                </div>
+            </div>
+
+            <div id="impressum"
+                class="w-full border-t text-neutral-500 border-t-neutral-800 flex flex-row justify-center space-x-8 pt-8 mb-8">
+                <div> 
+                    <p>
+                        Moritz Scheuerle
+                    </p>    
+                    <p>
+                        72622 Nürtingen
+                    </p>
+                    <p>
+                        Germany
+                    </p>
+                </div>
+                <div> 
+                    <p>
+                       moritzscheuerle@gmail.com
+                    </p>   
+                    <p >
+                        &copy; 2024. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navbar
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <h1 class="text-2xl font-bold">Karina</h1>
+            <button 
+                class="bg-gray-700 px-4 py-2 rounded-md text-gray-300 hover:bg-gray-600"
+                onclick="toggleDarkMode()">
+                Toggle Dark Mode
+            </button>
+        </div>
+    </header>
+
+    <section class="container mx-auto text-center py-20 px-6">
+        <h2 class="text-4xl md:text-6xl font-extrabold mb-6">Karina</h2>
+        <p class="text-gray-400 text-lg mb-8">
+            Build innovative, reliable, and scalable web solutions effortlessly.
+        </p>
+        <a href="#features" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-md text-white text-lg">
+            Explore Features
+        </a>
+    </section>
+
+    <section id="features" class="py-20 bg-gray-800">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8 px-6">
+            <div class="bg-gray-700 p-6 rounded-md shadow-md">
+                <h3 class="text-2xl font-semibold mb-4">Fast Performance</h3>
+                <p class="text-gray-400">
+                    Experience blazing-fast load times and seamless interactions.
+                </p>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-md shadow-md">
+                <h3 class="text-2xl font-semibold mb-4">Modern Design</h3>
+                <p class="text-gray-400">
+                    Enjoy sleek, user-friendly interfaces tailored for your audience.
+                </p>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-md shadow-md">
+                <h3 class="text-2xl font-semibold mb-4">Scalable Solutions</h3>
+                <p class="text-gray-400">
+                    Build solutions that grow effortlessly as your needs expand.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 text-center">
+        <h3 class="text-3xl font-semibold mb-4">Ready to Get Started?</h3>
+        <p class="text-gray-400 mb-6">
+            Join us today and take your projects to the next level.
+        </p>
+        <a href="#" class="px-6 py-3 bg-green-600 hover:bg-green-500 rounded-md text-white text-lg">
+            Get Started
+        </a>
+    </section>
+
+    <footer class="bg-gray-800 py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">
+                &copy; 2024 BrandName. All rights reserved.
+            </p>
+        </div>
+    </footer> -->
+</body>
+
+</html>

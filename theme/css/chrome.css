@@ -19,6 +19,11 @@ a>.hljs {
     text-decoration: underline;
 }
 
+.no_underline { 
+    text-decoration: none !important;
+    color: white !important;
+}
+
 
 #searchresults a:hover,
 .content a:link:hover,
@@ -27,6 +32,13 @@ a:hover > .hljs {
     color: gray;
     text-decoration: underline;
 }
+
+
+.no_underline:hover { 
+    color: white !important;
+    text-decoration: none !important;
+}
+
 
 /*
     body-container is necessary because mobile browsers don't seem to like
