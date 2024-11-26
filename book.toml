@@ -1,0 +1,15 @@
+[book]
+authors = ["Moritz Scheuerle"]
+language = "en"
+multilingual = false
+src = "src"
+title = "The Karina Programming Language"
+
+[output.html]
+preferred-dark-theme = "coal"
+
+[output.html.print]
+enable = false    
+
+[output.html.search]
+enable = false    
