@@ -22,11 +22,14 @@ Example:
 // │   └── math.krna
 // └── main.krna
 
-//import the pow function from core/math.krna inside main.krna
-import pow core.math 
+//import the pow function from src/core/math.krna
+import src.core.math pow 
+import src.main { println, exit, main } //import multiple items
 
-//import all items from main.krna inside core/math.krna
-import * main 
+import src.main.Substruct { staticFunction } //import static functions inside a struct, inside a file
+
+//import all items from src/core/main.krna, this includes, structs, enums, interfaces etc
+import src.core.math * 
 ```
 
 ### Referring to Imported Objects
@@ -37,26 +40,33 @@ Once imported, objects can be referenced either by their name or their full path
 
 ## Importing Java Classes
 
-Java classes can be imported using the `java::<path>` syntax. Unlike Karina units, Java classes cannot be referred to by their full qualified path. You can only use them by their short name, if imported.
+Java classes can be imported using the exact same syntax. 
 
 Example:
 
 ```karina
-import java::com.google.gson.Gson // Use the com.google.gson.Gson class by its short name Gson
+import com.google.gson.Gson // Use the com.google.gson.Gson class by its short name Gson
+
+// fully qualified names are still supported
+fn toJson(value: string) -> com.google.gson.JsonElement {
+    // ...
+}
 ```
 
 ### Aliasing Java Imports
 
 To handle name conflicts between Java classes, you can use aliases by specifying a new name for the import.
+This feature is only available if you have ambiguous name conflicts of classes. Aliasing Types without conflicts is not supported, since it can lead to confusion.
 
 Example:
 
 ```karina
-import AWTList java::java.awt.List   // Alias as AWTList
-import List java::java.util.List     // Alias as List
+import java.awt.List as AWTList   // Alias as AWTList
+import java.util.List as List  // Alias as List
 ```
 
 Now, you can use `AWTList` and `List` to differentiate between the two classes.
 
-> Note:
-> Use aliases only when absolutely necessary. Over-aliasing, like renaming `java.util.String` to `Text`, can confuse other developers and make your code harder to follow.
+> The Compiler also checks if aliased name contains the conflicted class name. 
+> For example you cannot alias `java.awt.List` as `Text` since it doesnt contains the conflicted class name `List`.
+

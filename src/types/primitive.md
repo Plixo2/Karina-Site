@@ -29,49 +29,28 @@ Strings in Karina are defined using quotation marks (`"`). As expected, escape c
 
 ### Interpolating Strings
 
-Karina supports **string interpolation**, allowing you to embed variables and expressions directly within a string using the `$` syntax. Interpolation works in two forms:
-
-1. **Variable Interpolation**: Embed a variable by prefixing it with `$`.
-2. **Expression Interpolation**: Use `${}` to embed more complex expressions.
-
+Karina supports **string interpolation**, allowing you to embed variables and expressions directly within a string using single quots and the `$` syntax. You can only embed variables after a `$` sign.
 
 ```karina
 let name = "Karina"
 let age = 3
 
 // Variable interpolation
-let greeting = "Hello, $name!" 
+let greeting = 'Hello, $name!'
 println(greeting) // Output: Hello, Karina!
 
-// Expression interpolation
-let info = "I am ${age + 1} years old."
-println(info) // Output: I am 4 years old.
+let info = "$greeting, i am $age years old."
+println(info) // Output: Hello, Karina!, I am 4 years old.
 ```
 
-### Escaping Interpolation
+You cannot include expressions behind the `$` sign, create a temporary variable instead.
+
 
 If you need to include a literal `$` in your string, escape it using a backslash (`\`).
 
 ```karina
-let message = "This is not an interpolation: \$name"
+let message = 'This is not an interpolation: \$name'
 println(message) // Output: This is not an interpolation: $name
 ```
 
-
-
-## Joining Strings
-
-You can join two strings in Karina using the `++` operator. If one or both of the values are not strings, their `toString` method is automatically called to convert them into a string.
-
-
-```karina
-let part1 = "Hello "
-let part2 = "World!"
-
-// Joining two strings
-let combined = part1 ++ part2
-println(combined) // Output: Hello World!
-
-let result = 1 ++ 2
-println(result) // Output: 12.
-```
+There is no native support for concatenating strings. Instead, use string interpolation or a StringBuilder.

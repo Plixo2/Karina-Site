@@ -20,9 +20,7 @@ The `main.krna` file should contain the following code:
 
 
 ```karina
-import java::java.lang.System
-
-fn main(args: Array<string>) {
+fn main(args: [string]) {
     System.out.println("Hello World!")
 }
 ```

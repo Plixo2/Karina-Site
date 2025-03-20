@@ -23,6 +23,30 @@ if number > 5 {
 }
 ```
 
+### Branch Patterns
+
+Karina has support for branch patterns like with Javas 'implied cast feature", or Rust's "if let" feature. 
+
+Implied cast:
+```karina
+if option is Option.Some value {
+
+} else is Option.None {
+
+}
+```
+
+Deconstructing:
+```karina
+if result is Result.Ok(value) {
+
+} else is Result.Err(error) {
+
+}
+
+```
+
+
 ## Break
 
 You can use the `break` keyword to exit a loop. 

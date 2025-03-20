@@ -30,7 +30,7 @@ When creating an instance of an enum case in Karina, prefix the case name with t
 
 ```karina
 Option.Some("hello") // Option<string>
-Option.None()        // Option<?>, where the type must be inferred
+Option.None()        // Option<?>, where the type can be inferred later
 ```
 
 ### Specifying Generic Types
