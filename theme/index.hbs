@@ -141,7 +141,8 @@
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor"
                             title="Toggle Table of Contents" aria-label="Toggle Table of Contents"
                             aria-controls="sidebar">
-                            <i class="fa fa-bars-sopr"></i>
+                            <i class="side-icon-open fa fa-bars"></i>
+                            <i class="side-icon-close fa fa-close"></i>
                         </label>
 
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
@@ -228,8 +229,26 @@
 
                         <div style="clear: both"></div>
                     </nav>
+
+
+
                 </div>
             </div>
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                {{#previous}}
+                <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter"
+                    aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                {{/previous}}
+
+                {{#next}}
+                <a rel="next prefetch" href="{{ path_to_root }}{{link}}" class="nav-chapters next" title="Next chapter"
+                    aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                {{/next}}
+            </nav>
 
 
         </div>

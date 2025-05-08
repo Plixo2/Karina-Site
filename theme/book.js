@@ -465,7 +465,6 @@ function playground_text(playground, hidden = true) {
             link.setAttribute('tabIndex', 0);
         });
         if (sidebarToggleButton) {
-
             sidebarToggleButton.setAttribute('aria-expanded', true);
         }
         sidebar.setAttribute('aria-hidden', false);
@@ -479,7 +478,7 @@ function playground_text(playground, hidden = true) {
             link.setAttribute('tabIndex', -1);
         });
         if (sidebarToggleButton) {
-        sidebarToggleButton.setAttribute('aria-expanded', false);
+            sidebarToggleButton.setAttribute('aria-expanded', false);
         }
         sidebar.setAttribute('aria-hidden', true);
         try { localStorage.setItem('mdbook-sidebar', 'hidden'); } catch (e) { }
@@ -489,7 +488,8 @@ function playground_text(playground, hidden = true) {
     sidebarToggleButton.addEventListener('click', function sidebarToggle() {
         if (body.classList.contains("sidebar-hidden")) {
             var current_width = parseInt(
-                document.documentElement.style.getPropertyValue('--sidebar-width'), 10);
+                document.documentElement.style.getPropertyValue('--sidebar-width'), 10
+            );
             if (current_width < 150) {
                 document.documentElement.style.setProperty('--sidebar-width', '150px');
             }

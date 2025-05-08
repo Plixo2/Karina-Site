@@ -41,16 +41,16 @@ let other = !some()
 - Since no interface is specified, Karina will default to a default interface (karina.lang.function.Function2_1) that matches the function's signature. Some build in interfaces extend common java interfaces, so they can be used in some java functions, when the interface cannot be inferred automatically.
 
 ```karina
-import java.util.function.UnaryOperator
+import java::util::function::UnaryOperator
 
 fn call() {
-    // fn(bool) -> bool impl UnaryOperator<bool>, karina.lang.function.Function1_1<bool, bool>
+    // fn(bool) -> bool impl UnaryOperator<bool>, karina::lang::function::Function1_1<bool, bool>
     operate(fn (x: bool) { 
         return !bool 
     }, 1)
 
     //UnaryOperator<bool> is inferred as the interface from the operate function. 
-    //karina.lang.function.Function1_1 is the default interface for one parameter and one return type.
+    //karina::lang::function::Function1_1 is the default interface for one parameter and one return type.
 }
 
 fn operate<T>(function: UnaryOperator<T>, element: T) -> T {

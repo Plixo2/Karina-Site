@@ -45,10 +45,10 @@ Java classes can be imported using the exact same syntax.
 Example:
 
 ```karina
-import com.google.gson.Gson // Use the com.google.gson.Gson class by its short name Gson
+import com::google::gson::Gson // Use the com.google.gson.Gson class by its short name Gson
 
 // fully qualified names are still supported
-fn toJson(value: string) -> com.google.gson.JsonElement {
+fn toJson(value: string) -> com::google::gson::JsonElement {
     // ...
 }
 ```
@@ -61,12 +61,18 @@ This feature is only available if you have ambiguous name conflicts of classes. 
 Example:
 
 ```karina
-import java.awt.List as AWTList   // Alias as AWTList
-import java.util.List as List  // Alias as List
+import java::awt::List as AWTList   // Alias as AWTList
+import java::util::List as List  // Alias as List
 ```
 
 Now, you can use `AWTList` and `List` to differentiate between the two classes.
 
+
+<div class="warning">
+
 > The Compiler also checks if aliased name contains the conflicted class name. 
 > For example you cannot alias `java.awt.List` as `Text` since it doesnt contains the conflicted class name `List`.
+
+</div>
+
 

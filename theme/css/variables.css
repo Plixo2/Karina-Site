@@ -3,9 +3,9 @@
 
 :root {
     --sidebar-width: 300px;
-    --sidebar-resize-indicator-width: 8px;
+    --sidebar-resize-indicator-width: 80px;
     --sidebar-resize-indicator-space: 2px;
-    --sidebar-width-offset_m: 10%;
+    --sidebar-width-offset_m: 5%;
     --page-padding: 15px;
     --content-max-width: 80%;
     --menu-bar-height: 50px;
@@ -42,6 +42,7 @@
     --quote-border: hsl(226, 15%, 22%);
 
     --warning-border: #ff8e00;
+    --info-border: #0065e0;
 
     --table-border-color: hsl(210, 25%, 13%);
     --table-header-bg: hsl(210, 25%, 28%);
@@ -91,6 +92,7 @@
     --quote-border: hsl(0, 0%, 29%);
 
     --warning-border: #ff8e00;
+    --info-border: #0065e0;
 
     --table-border-color: hsl(200, 7%, 13%);
     --table-header-bg: hsl(210, 4%, 10%);
@@ -140,6 +142,7 @@
     --quote-border: hsl(197, 37%, 91%);
 
     --warning-border: #ff8e00;
+    --info-border: #0065e0;
 
     --table-border-color: hsl(0, 0%, 95%);
     --table-header-bg: hsl(0, 0%, 80%);
@@ -189,6 +192,7 @@
     --quote-border: hsl(226, 15%, 22%);
 
     --warning-border: #ff8e00;
+    --info-border: #0065e0;
 
     --table-border-color: hsl(226, 23%, 16%);
     --table-header-bg: hsl(226, 23%, 31%);
@@ -238,6 +242,7 @@
     --quote-border: hsl(60, 5%, 70%);
 
     --warning-border: #ff8e00;
+    --info-border: #0065e0;
 
     --table-border-color: hsl(60, 9%, 82%);
     --table-header-bg: #b3a497;
@@ -286,6 +291,7 @@
         --quote-border: hsl(234, 21%, 23%);
 
         --warning-border: #ff8e00;
+        --info-border: #0065e0;
 
         --table-border-color: hsl(200, 7%, 13%);
         --table-header-bg: hsl(200, 7%, 28%);

@@ -5,156 +5,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.png">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
     <title>
         Karina Programming Language
     </title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        .title-font {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            transition: all 0.1s linear;
+        }
+
+        .keyword-font {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 900;
+            font-style: normal;
+            transition: all 0.1s linear;
+        }
+
+
+        .non-select {
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
         /* Add some additional custom styling for the button */
         :root {
-      --color-1: 0 100% 63%;
-      --color-2: 270 100% 63%;
-      --color-3: 210 100% 63%;
-      --color-4: 195 100% 63%;
-      --color-5: 90 100% 63%;
-      --speed: 4s;
-      --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
-    }
+            --color-1: 0 100% 63%;
+            --color-2: 270 100% 63%;
+            --color-3: 210 100% 63%;
+            --color-4: 195 100% 63%;
+            --color-5: 90 100% 63%;
+            --speed: 4s;
+            --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+        }
 
-    @keyframes rainbow {
-      0% {
-        background-position: 0%;
-      }
-      100% {
-        background-position: 200%;
-      }
-    }
+        @keyframes rainbow {
+            0% {
+                background-position: 0%;
+            }
 
-    .animate-rainbow {
-      animation: rainbow var(--speed, 2s) linear infinite;
-    }
+            100% {
+                background-position: 200%;
+            }
+        }
 
-      </style>
+        .animate-rainbow {
+            animation: rainbow var(--speed, 2s) linear infinite;
+        }
+
+        .slide-word {
+            animation: slideIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        .fade-mask {
+            mask-image: linear-gradient(to top, transparent 10%, white 20%, white 80%, transparent 90%);
+            mask-repeat: no-repeat;
+            mask-size: 100% 100%;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-size: 100% 100%;
+        }
+    </style>
 </head>
 
 <body class="bg-neutral-950 text-gray-100" style="background-image: url('bg.png'); ">
 
-
-    
-    <!-- <div class="absolute inset-0 -z-10 bg-fixed bg-neutral-950 text-black hidden sm:block">
-
-        <div class="h-full w-screen relative flex items-center justify-center opacity-5" 
-          style="background-image: url('bg.png'); ">
-        </div>
-    
-      </div> -->
-    
-
-    <!-- <div class="flex w-full h-screen bg-neutral-950">
-        <div
-            class="w-16 bg-neutral-950 h-full hover:w-64 transition-all flex justify-between items-start flex-col group/sidebar ml-4">
-            <div class="flex flex-col justify-start items-start">
-                <div class="flex h-12 mt-4 flex-row">
-                    <img src="favicon.png" alt="Karina" class="w-12 h-12 mx-auto">
-                </div>
-
-                <div class="flex h-12 mt-10 flex-row items-center group/item">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-lg">
-                        <div>
-                            O
-                        </div>
-                    </div>
-
-                    <div
-                        class="group-hover/item:ml-1 transition-all group-hover/sidebar:text-neutral-200 text-transparent">
-                        <a href="#">Overview</a>
-                    </div>
-                </div>
-
-                <div class="flex h-12 mt-4 flex-row items-center group/item">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-lg">
-                        <div>
-                            D
-                        </div>
-                    </div>
-
-                    <div
-                        class="group-hover/item:ml-1 transition-all group-hover/sidebar:text-neutral-200 text-transparent">
-                        <a href="/Intro.html">Documentation</a>
-                    </div>
-                </div>
-
-                <div class="flex h-12 mt-4 flex-row items-center group/item">
-                    <div class="w-12 h-12 flex justify-center items-center rounded-lg">
-                        <div>
-                            P
-                        </div>
-                    </div>
-
-                    <div
-                        class="group-hover/item:ml-1 transition-all group-hover/sidebar:text-neutral-200 text-transparent">
-                        <a href="#">Playground</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-4">
-                <a href="#impressum"
-                    class="underline transition-all text-transparent group-hover/sidebar:text-neutral-500">
-                    impressum
-                </a>
-            </div>
-        </div>
-        <div
-            class="rounded-xl bg-black flex-1 border border-neutral-800 flex justify-between items-center flex-col overflow-auto">
-            <div id="content" class="w-full">
-                <div class="h-96  w-full">
-
-                </div>
-                <div class="h-96  w-full">
-
-                </div>
-                <div class="h-96  w-full ">
-
-                </div>
-            </div>
-
-            <div id="impressum"
-                class="w-full border-t text-neutral-500 border-t-neutral-800 flex flex-row justify-center space-x-8 pt-8 mb-8">
-                <div> 
-                    <p>
-                        Moritz Scheuerle
-                    </p>    
-                    <p>
-                        72622 Nürtingen
-                    </p>
-                    <p>
-                        Germany
-                    </p>
-                </div>
-                <div> 
-                    <p>
-                       moritzscheuerle@gmail.com
-                    </p>   
-                    <p >
-                        &copy; 2024. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div> -->
-
     <header class="fixed top-0 left-0 w-full z-50 bg-neutral-950 border-b border-b-neutral-800">
         <div class="px-4 py-3 flex items-center justify-between">
-        <div class="flex h-8 flex-row">
-                <img src="favicon.png" alt="Karina" class="w-8 h-8 mx-auto">
-        </div>
+            <div class="flex h-8 flex-row">
+                <a href="/index.html">
+                    <img src="favicon.png" alt="Karina" class="w-8 h-8 mx-auto">
+                </a>
+            </div>
 
-            <a
-                href="https://github.com/Plixo2/KarinaC"
-                target="_blank"
-                rel="noopener noreferrer"
+            <a href="https://github.com/Plixo2/KarinaC" target="_blank" rel="noopener noreferrer"
                 class="text-gray-950 group relative inline-flex h-11 
                 animate-rainbow cursor-pointer items-center justify-center 
                 rounded-xl border-0 bg-[length:200%] px-8 py-2 
@@ -168,85 +115,115 @@
                 before:bg-[linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] before:[filter:blur(calc(0.8*1rem))] 
                 bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]">
 
-                    <div class="flex items-center">
-                        <svg viewBox="0 0 438.549 438.549" class="size-4"><path fill="currentColor" d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z"></path>
-                        </svg>
-                        <span class="ml-1 lg:hidden">Star</span>
-                        <span class="ml-1 hidden lg:inline">Star on GitHub</span> 
-                    </div>
+                <div class="flex items-center">
+                    <svg viewBox="0 0 438.549 438.549" class="size-4">
+                        <path fill="currentColor"
+                            d="M409.132 114.573c-19.608-33.596-46.205-60.194-79.798-79.8-33.598-19.607-70.277-29.408-110.063-29.408-39.781 0-76.472 9.804-110.063 29.408-33.596 19.605-60.192 46.204-79.8 79.8C9.803 148.168 0 184.854 0 224.63c0 47.78 13.94 90.745 41.827 128.906 27.884 38.164 63.906 64.572 108.063 79.227 5.14.954 8.945.283 11.419-1.996 2.475-2.282 3.711-5.14 3.711-8.562 0-.571-.049-5.708-.144-15.417a2549.81 2549.81 0 01-.144-25.406l-6.567 1.136c-4.187.767-9.469 1.092-15.846 1-6.374-.089-12.991-.757-19.842-1.999-6.854-1.231-13.229-4.086-19.13-8.559-5.898-4.473-10.085-10.328-12.56-17.556l-2.855-6.57c-1.903-4.374-4.899-9.233-8.992-14.559-4.093-5.331-8.232-8.945-12.419-10.848l-1.999-1.431c-1.332-.951-2.568-2.098-3.711-3.429-1.142-1.331-1.997-2.663-2.568-3.997-.572-1.335-.098-2.43 1.427-3.289 1.525-.859 4.281-1.276 8.28-1.276l5.708.853c3.807.763 8.516 3.042 14.133 6.851 5.614 3.806 10.229 8.754 13.846 14.842 4.38 7.806 9.657 13.754 15.846 17.847 6.184 4.093 12.419 6.136 18.699 6.136 6.28 0 11.704-.476 16.274-1.423 4.565-.952 8.848-2.383 12.847-4.285 1.713-12.758 6.377-22.559 13.988-29.41-10.848-1.14-20.601-2.857-29.264-5.14-8.658-2.286-17.605-5.996-26.835-11.14-9.235-5.137-16.896-11.516-22.985-19.126-6.09-7.614-11.088-17.61-14.987-29.979-3.901-12.374-5.852-26.648-5.852-42.826 0-23.035 7.52-42.637 22.557-58.817-7.044-17.318-6.379-36.732 1.997-58.24 5.52-1.715 13.706-.428 24.554 3.853 10.85 4.283 18.794 7.952 23.84 10.994 5.046 3.041 9.089 5.618 12.135 7.708 17.705-4.947 35.976-7.421 54.818-7.421s37.117 2.474 54.823 7.421l10.849-6.849c7.419-4.57 16.18-8.758 26.262-12.565 10.088-3.805 17.802-4.853 23.134-3.138 8.562 21.509 9.325 40.922 2.279 58.24 15.036 16.18 22.559 35.787 22.559 58.817 0 16.178-1.958 30.497-5.853 42.966-3.9 12.471-8.941 22.457-15.125 29.979-6.191 7.521-13.901 13.85-23.131 18.986-9.232 5.14-18.182 8.85-26.84 11.136-8.662 2.286-18.415 4.004-29.263 5.146 9.894 8.562 14.842 22.077 14.842 40.539v60.237c0 3.422 1.19 6.279 3.572 8.562 2.379 2.279 6.136 2.95 11.276 1.995 44.163-14.653 80.185-41.062 108.068-79.226 27.88-38.161 41.825-81.126 41.825-128.906-.01-39.771-9.818-76.454-29.414-110.049z">
+                        </path>
+                    </svg>
+                    <span class="ml-1 lg:hidden">Star</span>
+                    <span class="ml-1 hidden lg:inline">Star on GitHub</span>
+                </div>
             </a>
-          <!-- <a
-            href="https://github.com/Plixo2/KarinaC"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 bg-[#2ea44f]  hover:bg-white/20 text-white px-4 py-2 rounded-xl transition"
-          >
-            <img
-              src="github.svg"
-              alt="Logo"
-              class="h-5 w-5"
-            />
-           Source Code
-          </a> -->
         </div>
-      </header>
+    </header>
 
     <section class="flex flex-col justify-center items-center text-center py-20 px-6 h-[70vh] mt-14">
-        <h2 class="text-4xl md:text-6xl font-extrabold mb-6">Karina</h2>
-        <p class="text-gray-400 text-lg mb-8">
-            A language for the future, designed for simplicity and efficiency.
-        </p>
-        <div>
-            <a
-            href="/Intro.html"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 mx-1 bg-[#0969da]  hover:bg-white/20 text-white px-4 py-2 rounded-xl transition"
-          >
-            <img
-              src="book.svg"
-              alt="Logo"
-              class="h-5 w-5"
-            />
-           Docs
-          </a>
-        <a
-            href="https://github.com/Plixo2/KarinaC"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 mx-1 bg-[#2ea44f]   hover:bg-white/20 text-white px-4 py-2 rounded-xl transition"
-          >
-            <img
-              src="github.svg"
-              alt="Logo"
-              class="h-5 w-5"
-            />
-           Source Code
-          </a>
+        <div class="text-6xl title-font mb-10">KARINA</div>    
+        <!-- <div class="flex flex-col items-start mb-20 w-96"> -->
+            <!-- <div class="flex h-20 w-full items-center">
+                <div class="text-6xl title-font mr-4 non-select">IS</div>  
+            
+                <div class="h-20 w-screen">
+                  <div class="keyword-font text-6xl non-select text-nowrap text-red-600 h-20 w-full overflow-y-hidden">
+                    <div id="word1" class="h-20 text-start flex items-center">Creative</div>
+                    <div id="word2" class="h-20 text-start flex items-center">Fast</div>
+                    <div id="word3" class="h-20 text-start flex items-center">Intuitive</div>
+                  </div>
+                </div>
+            
+              </div>   -->
+        <!-- </div> -->
+        
+
+        
+<!-- 
+        <script>
+            const keywords = [
+                "Fun",
+                "Modern",
+                "Safe", 
+                "Fast",
+                "Interoperable", 
+                "Simple", 
+                "Dynamic", 
+                "2025",
+                "Open Source", 
+                "Community Driven", 
+                "JVM",
+                "Staticly Typed",
+                "Safe"
+            ];
+            const words = [document.getElementById("word1"), document.getElementById("word2"), document.getElementById("word3")];
+            let index = Math.floor(Math.random() * 100); // Random start index
+
+            function showNextWord() {
+                for (let i = 0; i < words.length; i++) {
+                    const word = words[i];
+                    word.classList.remove("slide-word"); // Remove animation class
+                    word.textContent = keywords[(index + i) % keywords.length]; // Set new word
+                    void word.offsetWidth; // Trigger reflow to restart animation
+                    word.classList.add("slide-word"); // Add animation class back
+                }
+                index = (index + 1) % keywords.length;
+            }
+
+            showNextWord(); // Show the first word
+            setInterval(showNextWord, 4000); // Change every 2s
+        </script> -->
+
+        <div class="non-select">
+            <a href="/guide/hello.html" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 mx-1 bg-[#0969da]  hover:bg-white/20 text-white px-4 py-2 rounded-xl transition">
+                <img src="book.svg" alt="Logo" class="h-5 w-5" />
+                Get Started
+            </a>
+            <a href="https://github.com/Plixo2/KarinaC" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 mx-1 bg-[#2ea44f]   hover:bg-white/20 text-white px-4 py-2 rounded-xl transition">
+                <img src="github.svg" alt="Logo" class="h-5 w-5" />
+                Source Code
+            </a>
         </div>
     </section>
+
 
     <section id="features" class="py-20">
         <div class="container mx-auto grid md:grid-cols-3 gap-8 px-6">
             <div class="p-6 rounded-xl shadow-md border-neutral-800 border bg-neutral-950">
                 <h3 class="text-2xl font-semibold mb-4">Statically Typed</h3>
                 <p class="text-gray-400">
-                    Karina is built on top of the JVM&rsquo;s robust type system, ensuring strong and reliable type safety. 
-                    It extends this foundation with modern syntax and additional features that make working with types more safe and intuitive.
+                    Karina is built on top of the JVM&rsquo;s robust type system, ensuring strong and reliable type
+                    safety.
+                    It extends this foundation with modern syntax and additional features that make working with types
+                    more safe and intuitive.
                 </p>
             </div>
             <div class="p-6 rounded-xl shadow-md border-neutral-800 border bg-neutral-950">
                 <h3 class="text-2xl font-semibold mb-4">Modern Design</h3>
                 <p class="text-gray-400">
                     Karina&rsquo;s syntax and design are heavily influenced by modern programming languages,
-                     striking a balance between simplicity and power. 
-                     With features like sum types, first-class functions, and strong type inference, Karina helps you write clean, efficient, and maintainable code.
+                    striking a balance between simplicity and power.
+                    With features like sum types, first-class functions, and strong type inference, Karina helps you
+                    write clean, efficient, and maintainable code.
                 </p>
             </div>
             <div class="p-6 rounded-xl shadow-md border-neutral-800 border bg-neutral-950">
                 <h3 class="text-2xl font-semibold mb-4">Java Interoperability</h3>
                 <p class="text-gray-400">
-                    Karina is designed to be fully interoperable with Java, allowing you to use existing Java libraries and frameworks seamlessly.
-                    This means you can leverage the vast <strong>Ecosystem of Java</strong> while enjoying the benefits of Karina's modern features.
+                    Karina is designed to be fully interoperable with Java, allowing you to use existing Java libraries
+                    and frameworks seamlessly.
+                    This means you can leverage the vast <strong>Ecosystem of Java</strong> while enjoying the benefits
+                    of Karina's modern features.
                 </p>
             </div>
         </div>
@@ -256,33 +233,27 @@
 
         <div class="grid md:grid-cols-3 gap-6 group">
             <!-- Card 1 -->
-            <a
-                href="/Intro.html"
+            <a href="/Intro.html"
                 class="bg-neutral-950 rounded-lg border-neutral-800 border shadow-lg overflow-hidden transform  hover:rotate-1 hover:scale-105 hover:!blur-none transition">
-                <img src="../../img/struct.png" alt="Placeholder Image"
-                    class="w-full h-48 object-cover">
+                <img src="../../img/struct.png" alt="Placeholder Image" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-xl font-bold">Documentation</h2>
                 </div>
             </a>
 
             <!-- Card 2 -->
-            <a
-                href="https://github.com/Plixo2/KarinaC/releases"
+            <a href="https://github.com/Plixo2/KarinaC/releases"
                 class="bg-neutral-950 rounded-lg border-neutral-800 border shadow-lg overflow-hidden transform  hover:-rotate-1 hover:scale-105 hover:!blur-none transition">
-                <img src="../../img/struct.png" alt="Placeholder Image"
-                    class="w-full h-48 object-cover">
+                <img src="../../img/struct.png" alt="Placeholder Image" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-xl font-bold">Download</h2>
                 </div>
             </a>
 
             <!-- Card 3 -->
-            <a
-                href="https://github.com/Plixo2/KarinaC"
+            <a href="https://github.com/Plixo2/KarinaC"
                 class="bg-neutral-950 rounded-lg border-neutral-800 border shadow-lg overflow-hidden transform  hover:rotate-1 hover:scale-105 hover:!blur-none transition">
-                <img src="../../img/struct.png" alt="Placeholder Image"
-                    class="w-full h-48 object-cover">
+                <img src="../../img/struct.png" alt="Placeholder Image" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-xl font-bold">Tooling</h2>
                 </div>
@@ -290,33 +261,27 @@
 
 
             <!-- Card 4 -->
-            <a
-                href="https://github.com/Plixo2/KarinaC"
+            <a href="https://github.com/Plixo2/KarinaC"
                 class="bg-neutral-950 rounded-lg border-neutral-800 border shadow-lg overflow-hidden transform  hover:rotate-1 hover:scale-105 hover:!blur-none transition">
-                <img src="../../img/struct.png" alt="Placeholder Image"
-                    class="w-full h-48 object-cover">
+                <img src="../../img/struct.png" alt="Placeholder Image" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-xl font-bold">Source Code</h2>
                 </div>
             </a>
 
             <!-- Card 5 -->
-            <a
-                href="https://github.com/Plixo2/KarinaC/projects"
+            <a href="https://github.com/Plixo2/KarinaC/projects"
                 class="bg-neutral-950 rounded-lg border-neutral-800 border shadow-lg overflow-hidden transform  hover:-rotate-1 hover:scale-105 hover:!blur-none transition">
-                <img src="../../img/struct.png" alt="Placeholder Image"
-                    class="w-full h-48 object-cover">
+                <img src="../../img/struct.png" alt="Placeholder Image" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-xl font-bold">Roadmap</h2>
                 </div>
             </a>
 
             <!-- Card 6 -->
-            <a
-                href="/links.html"
+            <a href="/links.html"
                 class="bg-neutral-950 rounded-lg border-neutral-800 border shadow-lg overflow-hidden transform  hover:rotate-1 hover:scale-105 hover:!blur-none transition">
-                <img src="../../img/struct.png" alt="Placeholder Image"
-                    class="w-full h-48 object-cover">
+                <img src="../../img/struct.png" alt="Placeholder Image" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-xl font-bold">Contributors</h2>
                 </div>
@@ -326,29 +291,31 @@
 
     </section>
 
+
+
     <footer>
         <div id="impressum"
-                class="w-full border-t bg-neutral-950 text-neutral-500 border-t-neutral-800 flex flex-row justify-center space-x-8 pt-8">
-                <div class="mb-8"> 
-                    <p>
-                        Moritz Scheuerle
-                    </p>    
-                    <p>
-                        72622 Nürtingen
-                    </p>
-                    <p>
-                        Germany
-                    </p>
-                </div>
-                <div> 
-                    <p>
-                       moritzscheuerle@gmail.com
-                    </p>   
-                    <p >
-                        &copy; 2025. All rights reserved.
-                    </p>
-                </div>
+            class="w-full border-t bg-neutral-950 text-neutral-500 border-t-neutral-800 flex flex-row justify-center space-x-8 pt-8">
+            <div class="mb-8">
+                <p>
+                    Moritz Scheuerle
+                </p>
+                <p>
+                    72622 Nürtingen
+                </p>
+                <p>
+                    Germany
+                </p>
             </div>
+            <div>
+                <p>
+                    moritzscheuerle@gmail.com
+                </p>
+                <p>
+                    &copy; 2025. All rights reserved.
+                </p>
+            </div>
+        </div>
     </footer>
 </body>
 

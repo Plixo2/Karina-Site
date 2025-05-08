@@ -18,10 +18,10 @@ fn main(args: [string]) {
 
     // Sum Types
     let get_circle_shape = fn(range) {
-        Primitive::new_circle(Vector2D::ZERO, range)
+        Primitive::newCircle(Vector2D::ZERO, range)
     } 
     let area = get_circle_shape().area()
-    println('Area: {area}')
+    println('Area: $area')
 
     // Java Interop
     let list = java::util::ArrayList {}
@@ -29,12 +29,12 @@ fn main(args: [string]) {
     list.add(" ")
     list.add("World!")
 
-    list.forEach(print)
+    list.forEach(fn(ref) print(ref))
     println()
 
     // Java Interop with functional Interfaces 
     let emptyFilter = fn(txt: string) impl java::util::Predicate<string> {
-        // '==' and '!=' calls the 'equals' method, while '===' and '!==' compare identity
+        // '==' and '!=' call the 'equals' method, while '===' and '!==' compare identity
         txt != " "
     }
 
@@ -43,7 +43,7 @@ fn main(args: [string]) {
 
     // Result and Option Types
     let result = Result::safeCall(fn() filted.get(-1))
-    let patternIf = if value is Result::OK(value) { value } else { 0 }
+    let patternIf = if value is Result::OK(value) { value } else { "" }
 
     let failable_cast = Option::instanceOf(Primitve::Circle, get_circle_shape(5))
     let radius = failable_cast.mapOrElse(fn(circle) circle.radius, 0)
@@ -56,7 +56,7 @@ enum Primitve {
     Square(position: Vector2D, width: float, height: float)
 
     // Static constructor method
-    fn new_circle(position: Vector2D, radius: float) -> Primitve {
+    fn newCircle(position: Vector2D, radius: float) -> Primitve {
         Circle { _: position, _: radius }
     }
 
@@ -87,10 +87,11 @@ interface Shape {
 }
 
 struct Vector2D {
+    const ZERO: Vector2D = Vector2D::new(0)
+    
     x: float
     y: float
 
-    const ZERO: Vector2D = Vector2D::new(0)
 
     // Static constructor method
     fn new(d: float) -> Vector2D = Vector2D { x: d, y: d }

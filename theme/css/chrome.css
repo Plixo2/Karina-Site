@@ -29,6 +29,22 @@ a:hover > .hljs {
 }
 
 
+label#sidebar-toggle[aria-expanded="true"] .side-icon-open {
+    display: none;
+}
+
+
+label#sidebar-toggle[aria-expanded="false"] .side-icon-close {
+    display: none;
+}
+/* 
+body .side-icon-close {
+    display: none;
+}
+
+body.sidebar-visible .side-icon-close {
+    display: block;
+} */
 
 
 /*
@@ -99,6 +115,7 @@ html.sidebar-visible #menu-bar {
         padding: 0 5px;
     }
 }
+
 
 .icon-button {
     border: none;

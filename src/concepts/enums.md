@@ -15,8 +15,8 @@ enum Option<T> {
 
 In the example above:
 
-- `Option.Some` represents a case that includes a value of type `T`.
-- `Option.None` represents a the absence of a value.
+- `Option::Some` represents a case that includes a value of type `T`.
+- `Option::None` represents a the absence of a value.
 
 We than use the `Option` enum to represent a value that may or may not be present. Only one of the two cases can be true at any given time.
 
@@ -26,11 +26,10 @@ Cases without arguments do not require parentheses in their definition.
 
 ## Instantiating Enums
 
-When creating an instance of an enum case in Karina, prefix the case name with the enum's name. **Parentheses are always required**, even for cases without arguments.
 
 ```karina
-Option.Some("hello") // Option<string>
-Option.None()        // Option<?>, where the type can be inferred later
+Option::Some { value: "hello"} // Option<string>
+Option::None {} // Option<?>, where the type can be inferred later
 ```
 
 ### Specifying Generic Types
@@ -38,6 +37,6 @@ Option.None()        // Option<?>, where the type can be inferred later
 If the generic type cannot be inferred, you can explicitly specify it during instantiation:
 
 ```karina
-Option.None<string>() // Option<string>
+Option::None<string> {} // Option<string>
 ```
 

@@ -50,7 +50,7 @@ Static functions are defined on the top level and can be called without an insta
 The main function is for example a static function.
 
 ```karina
-fn main(args: Array<string>) {
+fn main(args: [string]) {
     //...
 }
 ```
@@ -87,7 +87,7 @@ album.shuffle()
 ```karina
 let album = //...
 
-Album.shuffle(album)
+Album::shuffle(album)
 ```
 
 You can also pass the method as a function reference:
@@ -95,7 +95,7 @@ You can also pass the method as a function reference:
 ```karina
 let album = //...
 
-let shuffle = Album.shuffle
+let shuffle = Album::shuffle
 shuffle(album)
 ```
 

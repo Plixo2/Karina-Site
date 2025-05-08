@@ -51,8 +51,8 @@ enum Option<T> {
 To construct a specific value just instantiate the enum variant like you do with classes
 
 ```karina
-    let value = Option.Some { value: 42 }
-    assert(value is Option.Some)
+    let value = Option::Some { value: 42 }
+    assert(value is Option::Some)
     assert(value is Option)
 ```
 
@@ -72,7 +72,7 @@ Example:
         Err(error: E)
 
         fn getAsString(self) -> string {
-            let toStr = fn(str) Objects.toString(str) //null safe toString
+            let toStr = fn(str) Objects::toString(str) //null safe toString
             f self is Ok ok {
                 toStr(ok.value)
             } else is Err err { //special syntax for the else case

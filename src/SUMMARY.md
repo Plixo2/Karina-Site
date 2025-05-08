@@ -4,12 +4,14 @@
 
 # User Guide
 
-- [Installation](guide/install.md)
 - [Hello, World!](guide/hello.md)
+- [Karina for Java Developers](guide/starters.md)
+- [Best Practices](guide/best_practices.md)
+- [CLI](guide/cli.md)
 
 # Reference Guide
 - [Types](types.md)
-    - [Reference Type](types/reference.md)
+    - [Structs](types/structs.md)
     - [Primitives](types/primitive.md)
     - [Enums](types/enums.md)
     - [Function Types](types/function.md)
@@ -41,3 +43,4 @@
 -----------
 
 [Contributors](./links.md)
+[\*Under Construction\*](./under_construction.md)

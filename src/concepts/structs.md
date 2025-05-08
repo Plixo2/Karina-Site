@@ -42,7 +42,7 @@ struct Album {
     releaseDate: Date
     songs: [Song]
 
-    fn shuffle() -> [Song] {
+    fn shuffle(self) -> [Song] {
         self.songs.shuffle()
     }
 }

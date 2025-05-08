@@ -29,22 +29,23 @@ Karina has support for branch patterns like with Javas 'implied cast feature", o
 
 Implied cast:
 ```karina
-if option is Option.Some value {
 
-} else is Option.None {
+if option is Option::Some value {
+    
+} 
 
-}
 ```
 
-Deconstructing:
+Deconstructing and yielding values:
 ```karina
-if result is Result.Ok(value) {
-
-} else is Result.Err(error) {
-
+return if result is Result::Ok(value) {
+    String::valueOf(value)
+} else is Result::Err(error: string) {
+    error
 }
 
 ```
+
 
 
 ## Break
