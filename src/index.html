@@ -21,7 +21,7 @@
         .title-font {
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
-            font-weight: 800;
+            font-weight: 600;
             font-style: normal;
             transition: all 0.1s linear;
         }
@@ -29,7 +29,7 @@
         .keyword-font {
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
-            font-weight: 900;
+            font-weight: 400;
             font-style: normal;
             transition: all 0.1s linear;
         }
@@ -88,12 +88,15 @@
             -webkit-mask-repeat: no-repeat;
             -webkit-mask-size: 100% 100%;
         }
+
+        
+
     </style>
 </head>
 
 <body class="bg-neutral-950 text-gray-100" style="background-image: url('bg.png'); ">
 
-    <header class="fixed top-0 left-0 w-full z-50 bg-neutral-950 border-b border-b-neutral-800">
+    <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-t from-transparent to-black">
         <div class="px-4 py-3 flex items-center justify-between">
             <div class="flex h-8 flex-row">
                 <a href="/index.html">
@@ -113,7 +116,7 @@
                 before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 
                 before:animate-rainbow
                 before:bg-[linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] before:[filter:blur(calc(0.8*1rem))] 
-                bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]">
+                bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]">
 
                 <div class="flex items-center">
                     <svg viewBox="0 0 438.549 438.549" class="size-4">
@@ -129,7 +132,12 @@
     </header>
 
     <section class="flex flex-col justify-center items-center text-center py-20 px-6 h-[70vh] mt-14">
-        <div class="text-6xl title-font mb-10">KARINA</div>    
+
+        <div class="flex flex-col justify-center items-center text-center py-20 px-6 h-[70vh]">
+    
+       
+        <div class="text-6xl title-font mb-4">Karina</div>    
+        <div class="non-select text-2xl keyword-font mb-10 text-neutral-500">Modern. Concise. Interoperable.</div>    
         <!-- <div class="flex flex-col items-start mb-20 w-96"> -->
             <!-- <div class="flex h-20 w-full items-center">
                 <div class="text-6xl title-font mr-4 non-select">IS</div>  
@@ -184,16 +192,30 @@
 
         <div class="non-select">
             <a href="/guide/hello.html" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 mx-1 bg-[#0969da]  hover:bg-white/20 text-white px-4 py-2 rounded-xl transition">
+                class="inline-flex items-center gap-2 mx-4 bg-neutral-300 text-black font-semibold  hover:bg-neutral-500 px-4 py-2 rounded-xl transition">
                 <img src="book.svg" alt="Logo" class="h-5 w-5" />
                 Get Started
+
             </a>
             <a href="https://github.com/Plixo2/KarinaC" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 mx-1 bg-[#2ea44f]   hover:bg-white/20 text-white px-4 py-2 rounded-xl transition">
-                <img src="github.svg" alt="Logo" class="h-5 w-5" />
+                class="inline-flex items-center gap-2 mx-4 bg-black border-neutral-800 border-2 hover:bg-neutral-800 text-white px-4 py-2 rounded-xl transition">
+                <img src="github.svg" alt="Logo" class="h-5 w-5 invert" />
                 Source Code
             </a>
+
+        
         </div>
+    </div>
+        <div class="mt-10 text-neutral-500 flex-row flex items-center justify-center">
+            <div>
+                Developed by 
+            </div>
+            <a href="https://github.com/Plixo2" class="ml-3 p-1 title-font text-white flex-row rounded-lg flex items-center justify-center bg-neutral-900">
+                <img src="pfp.png" alt="Logo" class=" mr-2 h-7 w-7 rounded-full object-cover" />
+                Plixo
+            </a>
+        </div>
+
     </section>
 
 

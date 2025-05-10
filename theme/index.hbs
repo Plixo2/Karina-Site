@@ -58,7 +58,7 @@
     <!-- Provide site root to javascript -->
     <script>
         var path_to_root = "{{ path_to_root }}";
-        var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "{{ preferred_dark_theme }}" : "{{ default_theme }}";
+        var default_theme = "{{ preferred_dark_theme }}";
     </script>
     <!-- Start loading toc.js asap -->
     <script src="{{ path_to_root }}toc.js"></script>
@@ -136,7 +136,7 @@
             <div class="page">
                 {{> header}}
                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky">
+                <div id="menu-bar" class="menu-bar sticky bg-stripes-yellow-black ">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor"
                             title="Toggle Table of Contents" aria-label="Toggle Table of Contents"
@@ -209,6 +209,16 @@
 
                 <div id="content" class="content">
                     <main>
+                            <div class="warning banner-warning">
+
+                            Under construction: This guide is a work in progress and does not reflect any actual features that are currently available language. 
+                            <br>
+                            <br>
+                        <a href="https://github.com/Plixo2/KarinaC" target="_blank">
+                            Click here to visit the GitHub repository.
+                        </a>
+                            </div>
+
                         {{{ content }}}
                     </main>
 

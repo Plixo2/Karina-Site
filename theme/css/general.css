@@ -32,6 +32,24 @@ main {
     overflow-wrap: break-word;
 }
 
+
+.bg-stripes-yellow-black {
+    background-image: repeating-linear-gradient(
+        45deg,
+        #56470b,         /* Tailwind yellow-400 */
+        #56470b 10px,
+        #000 10px,
+        #000 20px
+    );
+}
+
+.banner-warning {
+    margin-top: 80px !important;
+    margin-bottom: 80px !important;
+    font-weight: bold;
+}
+
+
 /* make wide tables scroll if they overflow */
 .table-wrapper {
     overflow-x: auto;

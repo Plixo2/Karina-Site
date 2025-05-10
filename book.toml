@@ -3,7 +3,7 @@ authors = ["Moritz Scheuerle"]
 language = "en"
 multilingual = false
 src = "src"
-title = "The Karina Programming Language"
+title = "UNDER CONSTRUCTION"
 
 [output.html]
 preferred-dark-theme = "coal"
