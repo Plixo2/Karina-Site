@@ -3,7 +3,7 @@ authors = ["Moritz Scheuerle"]
 language = "en"
 multilingual = false
 src = "src"
-title = "UNDER CONSTRUCTION"
+title = "Karina"
 
 [output.html]
 preferred-dark-theme = "coal"

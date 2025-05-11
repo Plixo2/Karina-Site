@@ -56,6 +56,7 @@ hljs.registerLanguage("x86asm", function () { "use strict"; return function (s) 
 
 
 
+
 hljs.registerLanguage("karina", function () {
     "use strict";
     return function (e) {
@@ -65,13 +66,13 @@ hljs.registerLanguage("karina", function () {
             aliases: ["krna"],
             keywords: {
                 keyword: "interface fn yield let native if case is struct matches string async double in while long short byte void as false for char pub extend of virtual super override continue default null break self final mut static import return await package throw try extends impl float assert catch int match enum bool true else",
-                literal: "true false self",
                 built_in: "double string long short byte bool short char int void"
             },
             contains: [
                 hljs.NUMBER_MODE,
                 hljs.C_LINE_COMMENT_MODE,
                 hljs.QUOTE_STRING_MODE,
+                hljs.APOS_STRING_MODE,
 
                 {
                     className: "title",
@@ -125,10 +126,6 @@ hljs.registerLanguage("karina", function () {
 
                     contains: [
                         {
-                            className: "built_in",
-                            begin: "java::",
-                        },
-                        {
                             className: "none",
                             begin: e.IDENT_RE,
                         },
@@ -143,7 +140,10 @@ hljs.registerLanguage("karina", function () {
                     className: "strong",
                     begin: "@" + e.IDENT_RE
                 },
-
+				{
+                    className: "variable",
+                    begin: ":" + e.IDENT_RE + ":?",
+                },
                 {
                     className: "variable",
                     begin: e.IDENT_RE + ":",

@@ -1,31 +1,10 @@
 # Enum Type
 
-Karina supports **sum types**, aka **enums**, as a way to define a type that can have a fixed set of values. Enums are a powerful way to represent a set of related constants, and they can be used to define a type that can only have a specific set of values.
+Karina supports **Algebraic Data Types**, aka **Enums**, as a way to define a type with a fixed set of values.
+Enums give you a way of saying a value is one of a possible set of values. You can encode all those values in a single enum type.
 
 Just to be clear, a enum can only be one case at a time.
 
-```karina
-
-enum Color {
-    Red
-    Green
-    Blue
-}
-
-```
-
-This is not a special new type, but a syntactic construct that is equivalent to the following Java code:
-```java
-
-public sealed interface Color permits Red, Green, Blue {
-
-    record Red() implements Color {}
-    record Green() implements Color {}
-    record Blue() implements Color {}
-
-}
-
-```
 
 ---
 
@@ -84,3 +63,30 @@ Example:
 
 
 ---
+
+
+## Java Interaction
+
+Consider this Karina code:
+```karina
+
+enum ColorSpace {
+    RGB(r: float, g: float, b: float)
+    CMYK(c: float, m: float, y: float, k: float)
+    HSL(h: float, s: float, l: float)
+}
+
+```
+
+This is not a special new type, but a syntactic construct that is equivalent to the following Java code:
+```java
+
+public sealed interface ColorSpace permits RGB, CMYK, HSL {
+
+    record RGB(float r, float g, float b) implements Color {}
+    record CMYK(float c, float m, float y, float k) implements Color {}
+    record HSL(float h, float s, float l) implements Color {}
+
+}
+
+```

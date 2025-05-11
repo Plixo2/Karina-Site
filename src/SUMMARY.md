@@ -1,15 +1,14 @@
 # Summary
 
-[Introduction](./Intro.md)
 
 # User Guide
 
 - [Hello, World!](guide/hello.md)
+- [Features](guide/overview.md)
 - [Karina for Java Developers](guide/starters.md)
-- [Best Practices](guide/best_practices.md)
-- [CLI](guide/cli.md)
 
-# Reference Guide
+# [Under Construction]
+- [Best Practices](guide/best_practices.md)
 - [Types](types.md)
     - [Structs](types/structs.md)
     - [Primitives](types/primitive.md)
@@ -23,6 +22,7 @@
     - [Pattern Matching](concepts/patterns.md)
     - [Generics](concepts/generics.md)
 - [Expressions](expressions.md)
+    - [Expressions](expressions/expressions.md)
     - [Control Flow](expressions/break.md)
     - [Loops](expressions/loops.md)
     - [Match](expressions/match.md)
@@ -32,9 +32,6 @@
     - [Problems](jvm/problems.md)
 - [Imports](imports.md)
 - [Annotations](annotations.md)
-- [Compilation](compilation.md)
-    - [Build](compilation/build.md)
-    - [Run](compilation/run.md)
 <!-- - [Hello, World!](./hello.md) -->
 
 

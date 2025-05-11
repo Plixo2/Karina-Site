@@ -1,6 +1,0 @@
-
-
-# Karina CLI tool
-
----
-

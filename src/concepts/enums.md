@@ -1,6 +1,6 @@
 # Enums
 
-Enums, also known in other languages as _Sum Types_ or _Tagged Unions_, are a versatile and powerful datatype in Karina. They allow you to define a set of distinct cases, each of which can optionally carry associated data. Here's how enums work in Karina, along with some unique characteristics that set them apart.
+Enums, also known in other languages as _Algebraic Data Types_ or _Tagged Unions_, are a versatile and powerful datatype in Karina. They allow you to define a set of distinct cases, each of which can optionally carry associated data. Here's how enums work in Karina, along with some unique characteristics that set them apart.
 
 ## Defining an Enum
 

@@ -2,27 +2,23 @@
 # Quick Start Guide
 
 
+
 ## 1. Installation
 
-#### Download Precompiled Binaries
-If you want to avoid building the compiler yourself, you can download the precompiled binaries:
+[Download the installer here](https://github.com/Plixo2/KarinaC/releases/latest)
 
-[Download Precompiled Binaries from GitHub](#)
+If you'd prefer to compile the program yourself, you can follow the steps provided in the repository's [README](https://github.com/Plixo2/KarinaC/).
 
+---
 
-#### Build from Source
-If you'd prefer to compile the program yourself, you can follow the steps provided in the repository's [README](#).
-
-### Post-Download Instructions:
-1. Move the executable to a convenient location.
-2. Add it to your system's `PATH`.
-
+<br>
 
 To verify the installation, run the following command:
 
-```bash
+```
 >> karina --version
 ```
+
 
 
 ## 2. Create a new Project
@@ -45,7 +41,7 @@ The `main.krna` file should contain the following code:
 
 ```karina
 fn main(args: [string]) {
-    println("Hello World!")
+    println("Hello, World!")
 }
 ```
 
@@ -61,13 +57,20 @@ Then, you can run the program with the following command:
 >> karina run
 ```
 ```
-Hello World!
+Hello, World!
 ```
 
+Use the `--help` flag to see all available commands
 
-See [the CLI documentation](cli.md) for more information on the `karina` command.
+## Features 
+Take a look at the features and syntax [here](overview.md)
+
+## Tooling 
+
+The Language Server was removed until Karina is more stable.
 
 
+[This](https://github.com/Plixo2/KarinaC/tree/master/resources/karina) Textmate Grammar can be used for simple syntax highlighting in supported editors, like VSCode or IntelliJ.
 
 ## Learning
 
