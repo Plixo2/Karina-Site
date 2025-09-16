@@ -1,0 +1,157 @@
+# ANTLR Syntax Reference
+
+
+
+```
+parser grammar KarinaParser;
+
+options { tokenVocab=KarinaLexer; }
+
+unit: import_* item* EOF;
+
+import_: 'import' dotWordChain ('*' | id | '{' commaWordChain '}' | 'as' id)?;
+commaWordChain: id (',' id)*;
+
+item: annotation* (function | struct | enum | interface | const);
+
+function: 'pub'? 'fn' id? genericHintDefinition? '(' selfParameterList ')' ('->' type)? ('=' expression | block)?;
+
+const: 'pub'? 'mut'? 'static' id ':' type '=' exprWithBlock;
+field: 'pub'? 'mut'? id ':' type;
+        
+struct: 'pub'? 'struct' id genericHintDefinition? ('{' const* field* function* implementation* boundWhere* '}')?;
+implementation: 'impl' structType ('{' function* '}')?;
+genericWithBounds: (genericWithBound (',' genericWithBound)*)?;
+
+
+enum: 'pub'? 'enum' id genericHintDefinition? '{' const* enumMember* function* implementation* boundWhere* '}';
+enumMember: id ('(' parameterList ')')?;
+
+interface : 'pub'? 'interface' id genericHintDefinition? ('{' const* function* interfaceExtension* '}')?;
+interfaceExtension: 'impl' structType;
+
+typeInterface : 'pub'? 'type' 'interface' id genericHintDefinition? ('{' function* '}')?;
+
+selfParameterList: ((parameter | 'self') (',' parameter)*)?;
+
+//not implemented
+boundWhere : 'where' genericHintDefinition? genericWithBounds ('{' function* '}');
+
+
+parameterList: (parameter (',' parameter)*)?;
+parameter: id ':' type;
+
+type: typeInner typePostFix?;
+
+typePostFix: '?' typeInner?;
+
+typeInner: 'void'
+    | 'int'
+    | 'double'
+    | 'short'
+    | 'byte'
+    | 'char'
+    | 'long'
+    | 'float'
+    | 'bool'
+    | 'string'
+    | 'any'
+    | structType
+    | arrayType
+    | functionType
+    | '(' type ')'
+    ;
+
+
+
+structType: dotWordChain genericHint?;
+arrayType: '[' type ']' ;
+functionType: 'fn' '(' typeList ')' ('->' type)? interfaceImpl?;
+typeList: (type (',' type)*)?;
+
+genericHint: '<' (type (',' type)* )? '>';
+genericHintDefinition: '<' (genericWithBound (',' genericWithBound)* )? '>';
+genericWithBound: id (':' boundList)?;
+boundList: structType ('+' structType)*;
+
+dotWordChain: id ('::' id)*;
+
+annotation: '@' id ('=' jsonValue)?;
+
+
+jsonObj : '{' (jsonPair ((',')? jsonPair)*)? '}';
+jsonPair : (STRING_LITERAL | id) ':' jsonValue;
+jsonArray : '[' (jsonValue ((',')? jsonValue)*)? ']';
+
+jsonExpression: 'expr' block;
+jsonType: 'type' '{' type '}';
+jsonMethod: 'fn' '{' function '}';
+jsonValue: STRING_LITERAL | NUMBER | jsonObj | jsonArray | 'true' | 'false' | 'null' | jsonExpression | jsonType | jsonMethod;
+
+
+block: '{' (expression ';'?)* '}';
+
+exprWithBlock : block | expression;
+
+expression: varDef | usingVarDef | closure | 'return' exprWithBlock? | match | if | while | for | conditionalOrExpression | 'break' | 'continue' | throw;
+
+varDef: 'let' id (':' type)? '=' exprWithBlock;
+usingVarDef: 'using' id (':' type)? '=' expression exprWithBlock;
+
+closure : 'fn' '(' optTypeList ')' ('->' type)? interfaceImpl? exprWithBlock;
+interfaceImpl: 'impl' (structTypeList | '(' structTypeList ')');
+structTypeList: structType (',' structType)*;
+
+match: 'match' exprWithBlock '{' matchCase* '}';
+matchCase: (matchDefault | matchInstance) '->' exprWithBlock;
+matchInstance: structType (id | '(' optTypeList ')');
+matchDefault: '_';
+
+
+if: 'if' exprWithBlock (id | '(' optTypeList ')')? block elseExpr?;
+elseExpr: 'else' isShort? (if | block | match);
+isShort: 'is' type (id | '(' optTypeList ')')?;
+
+while: 'while' exprWithBlock block;
+
+
+for: 'for' optTypeName 'in' exprWithBlock block;
+
+
+throw: 'throw' exprWithBlock;
+
+conditionalOrExpression: conditionalAndExpression ('||' conditionalOrExpression)?;
+conditionalAndExpression: equalityExpression ('&&' conditionalAndExpression)?;
+equalityExpression: relationalExpression (('==' | '!=' | '===' | '!==') equalityExpression)?;
+relationalExpression: additiveExpression (('<' | '>' | '<=' | '>=') relationalExpression)?;
+additiveExpression: multiplicativeExpression (('+' | '-' | '&') additiveExpression)?;
+multiplicativeExpression: unaryExpression (('*' | '/' | '%') multiplicativeExpression)?;
+unaryExpression: ('-' | '!')? factor;
+factor: object postFix* (('=' exprWithBlock) | isInstanceOf)?;
+postFix: dotPostFix | genericHint? '(' expressionList ')' | '[' exprWithBlock ']' | 'as' type | '?' ;
+object: '(' exprWithBlock ')' | NUMBER | id (pathPostFix)* (genericHint? '{' initList '}')? | STRING_LITERAL | CHAR_LITERAL | 'self' | superCall | 'true' | 'false' | array;
+array: ('<' type '>')? '[' expressionList ']';
+
+dotPostFix: '.' (id | 'class')?;
+pathPostFix: '::' id?;
+
+superCall: 'super' '<' structType  '>' ('.' id)?;
+
+expressionList: (exprWithBlock (',' exprWithBlock)*)?;
+
+initList: (memberInit (',' memberInit)*)?;
+memberInit: id ':' exprWithBlock;
+
+isInstanceOf: 'is' type;
+
+optTypeList: (optTypeName (',' optTypeName)*)?;
+optTypeName: id (':' type)?;
+
+id: ID | 'expr' | 'type' | '\\' escaped | '_';
+escaped: FN | IS | IN | AS | EXTEND
+| MATCH | OVERRIDE | VIRTUAL | YIELD
+| STRUCT | TRAIT | IMPL | LET | USING
+| SELF | STRING | BOOL | WHERE
+| CONST | MUT | ANY | MACRO | PUB;
+
+```

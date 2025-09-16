@@ -5,39 +5,38 @@
 
 - [Hello, World!](guide/hello.md)
 - [Features](guide/overview.md)
-- [Karina for Java Developers](guide/starters.md)
-
-# [Under Construction]
-- [Best Practices](guide/best_practices.md)
-- [Types](types.md)
-    - [Structs](types/structs.md)
-    - [Primitives](types/primitive.md)
-    - [Enums](types/enums.md)
-    - [Function Types](types/function.md)
-- [Language Concepts](concepts.md)
-    - [Structs](concepts/structs.md)
-    - [Functions](concepts/functions.md)
-    - [Enums](concepts/enums.md)
-    - [Interfaces](concepts/interfaces.md)
-    - [Pattern Matching](concepts/patterns.md)
-    - [Generics](concepts/generics.md)
-- [Expressions](expressions.md)
-    - [Expressions](expressions/expressions.md)
-    - [Control Flow](expressions/break.md)
-    - [Loops](expressions/loops.md)
-    - [Match](expressions/match.md)
-    - [Calling and Indexing](expressions/calling.md)
-- [JVM Intergration](jvm.md)
-    - [Classes and Functions](jvm/basic.md)
-    - [Problems](jvm/problems.md)
-- [Imports](imports.md)
-- [Annotations](annotations.md)
-<!-- - [Hello, World!](./hello.md) -->
-
-
-
+- [Syntax](syntax.md)
 
 -----------
 
-[Contributors](./links.md)
-[\*Under Construction\*](./under_construction.md)
+- [Under Construction](under_construction.md)
+  - [Karina for Java Developers](under_construction.md)
+  - [Best Practices](under_construction.md)
+  - [Types](under_construction.md)
+      - [Structs](under_construction.md)
+      - [Primitives](under_construction.md)
+      - [Enums](under_construction.md)
+      - [Function Types](under_construction.md)
+  - [Language Concepts](under_construction.md)
+      - [Structs](under_construction.md)
+      - [Functions](under_construction.md)
+      - [Enums](under_construction.md)
+      - [Interfaces](under_construction.md)
+      - [Pattern Matching](under_construction.md)
+      - [Generics](under_construction.md)
+  - [Expressions](under_construction.md)
+      - [Expressions](under_construction.md)
+      - [Control Flow](under_construction.md)
+      - [Loops](under_construction.md)
+      - [Match](under_construction.md)
+      - [Calling and Indexing](under_construction.md)
+  - [JVM Integration](under_construction.md)
+      - [Classes and Functions](under_construction.md)
+      - [Problems](under_construction.md)
+  - [Imports](under_construction.md)
+  - [Annotations](under_construction.md)
+
+-----------
+
+[Contributors](links.md)
+[Under Construction](under_construction.md)

@@ -56,7 +56,6 @@ hljs.registerLanguage("x86asm", function () { "use strict"; return function (s) 
 
 
 
-
 hljs.registerLanguage("karina", function () {
     "use strict";
     return function (e) {
@@ -65,7 +64,7 @@ hljs.registerLanguage("karina", function () {
             name: "Karina",
             aliases: ["krna"],
             keywords: {
-                keyword: "interface fn yield let native if case is struct matches string async double in while long short byte void as false for char pub extend of virtual super override continue default null break self final mut static import return await package throw try extends impl float assert catch int match enum bool true else",
+                keyword: "any type fn is  in  as null import extends extend match override native true false virtual break return yield struct static throw trait macro impl enum class let i const els while fo super public pub where using interface self int mut long byte char double short string float bool void continue",
                 built_in: "double string long short byte bool short char int void"
             },
             contains: [

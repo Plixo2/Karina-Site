@@ -1,9 +1,30 @@
 
 # Quick Start Guide
 
+<br>
 
 
-## 1. Installation
+<details open>
+
+<summary class="biggerText">Visual Studio Code Extension</summary>
+
+
+- Install the extension from the [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=karina.karina-lsp) or search for "Karina" in the extensions tab of VSCode.
+- Download the [Karina Language Server](https://github.com/Plixo2/KarinaC/releases/latest/download/karina-lsp.jar) and configure the path in the extension settings (`karina.lspLocation`).
+- Create a `karina-build.json` file in the root of your workspace. Example:
+  ```json
+  {
+    "source": "src"
+  }
+  ```
+- Set a Keybind for the `karina.run.main` command or use the command palette to run the main function of your project.
+
+
+</details>
+
+<details>
+
+<summary class="biggerText">Local Installation</summary>
 
 [Download the installer here](https://github.com/Plixo2/KarinaC/releases/latest)
 
@@ -19,9 +40,7 @@ To verify the installation, run the following command:
 >> karina --version
 ```
 
-
-
-## 2. Create a new Project
+#### Create a new Project
 
 You can use the karina CLI to create a new project with the following command:
 
@@ -62,24 +81,15 @@ Hello, World!
 
 Use the `--help` flag to see all available commands
 
+
+</details>
+
 ## Features 
 Take a look at the features and syntax [here](overview.md)
 
 ## Tooling 
 
-The Language Server was removed until Karina is more stable.
+Install the [Karina Language Server](https://github.com/Plixo2/Karina-VSCode) for VSCode
 
-
-[This](https://github.com/Plixo2/KarinaC/tree/master/resources/karina) Textmate Grammar can be used for simple syntax highlighting in supported editors, like VSCode or IntelliJ.
-
-## Learning
-
-
-
-If you're already a Java or Kotlin developer, follow the [*Getting started for Java developers*](starters.md) guide to get up to speed with Karina's syntax and features.
-
-Or quickly learn the essentials of the Karina programming language with our beginner tour to grasp the fundamentals: 
-
-[*Karina Tour*](../under_construction.md)
 
 

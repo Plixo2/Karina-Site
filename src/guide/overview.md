@@ -2,9 +2,20 @@
 
 ## Features
 
-The Karina programming language is designed to be a simple, expressive, and powerful language for building applications. It has a number of features that make it unique and easy to use. 
 
-This document provides an overview of the key features of Karina, including its syntax, type system, and standard library. It also includes examples of how to use these features in practice.
+**Karina** is a statically typed, general-purpose, high-level programming language focused on:
+
+- Simplicity
+- Interoperability
+- Concise notation
+- Null safety
+
+**Key features:**
+- Fully compatible with Java
+- Seamless use of existing libraries and frameworks
+- Modern programming experience
+- Algebraic Data Types
+- First-class functions
 
 You can also find some examples in the [test](https://github.com/Plixo2/KarinaC/tree/master/tests) directory of the KarinaC repository.
 
@@ -18,35 +29,192 @@ You can also find some examples in the [test](https://github.com/Plixo2/KarinaC/
 4. [Enums](#enums)
 5. [Closures](#closures)
 6. [Interfaces](#interfaces)
+7. [Imports](#imports)
 
+# Structs
+
+Structs are basically java classes, but with a more lightweight syntax.
+
+```karina
+pub struct Vec2 {
+    pub x: double
+    pub y: double 
+    
+    // static function
+    pub fn fromAngle(angle: double) -> Vec2 =
+        Vec2 { x: Math::cos(angle), y: Math::sin(angle) }
+    
+    // member function
+    pub fn length(self) -> double {
+        Math::sqrt(self.x * self.x + self.y * self.y)
+    }
+}
+```
+A default constructor and a `toString` method is automatically created. 
+
+```karina
+let v = Vec2 { x: 1.0, y: 1.5 }
+println(v) // Vec2{x=1.0, y=1.5}
+```
+
+Structs, Fields and Functions are private by default. Use the `pub` keyword to make them public.
+Fields are also immutable by default. Use the `mut` keyword to make them mutable.
+Local Variables are mutable by default. 
+
+<br>
 
 # Functions
 
-Main page: [Functions](../concepts/functions.md)
+Karina has five types of functions: 
+1. Member Functions
+2. Static Functions
+3. Abstract functions
+4. Closures
+5. Extension Functions
+
+### Member functions 
+Member functions are defined inside a struct, enum or interface and can be called on an instance of that type. \
+They have access to the instance via the `self` keyword as the first parameter.
 
 ```karina
-fn create<T>(name: string, object: T) -> Option<T> {
+struct User {
+    name: string
+
+    fn getNameUpperCase(self) -> string = 
+        self.name.toUpperCase() 
+}
+```
+```karina
+user.getNameUpperCase()
+```
+
+### Static functions
+Static functions are defined on the top level, inside a struct, enum or interface and can be called without an instance of that type.
+
+```karina
+fn display<T: ToStr + Display>(obj: T) {
     //...
 }
 ```
 
-This is a static generic function that takes a type parameter `T` and returns an `Option<T>`. 
+This also shows the use of generic types and type constraints. 
 
-The braces can be omitted if the function body is a single expression.
+### Abstract functions
+Abstract functions are defined in interfaces and do not have a body. They have to be implemented by the struct or enum that implements the interface.
 
 ```karina
-fn get_name(self) -> string = self.name
+interface ToStr {
+    fn toStr(self) -> string
+}
 ```
-The `self` keyword is used to refer to the current instance of the struct or class. It is similar to `this` in other languages.
 
-Functions can also be defined as methods on structs, enums and interfaces. 
+### Closures
+
+Closures are both a type and a expression.
+
+```karina
+let add = fn(a: int, b: int) -> int { a + b }
+add(1, 2) // 3
+```
+
+Parameter types and return types can be omitted if they can be inferred. 
+\
+\
+Closures compile to interfaces. You can explicitly define the interfaces a closure implements.
+
+```karina
+fn () -> string impl Callable<string>, Supplier<string>
+```
+
+
+### Extension functions
+Extension functions behave like member functions, but are defined outside of the type.
+
+```karina
+@Extension
+pub fn sqrt(value: double) -> double = Math::sqrt(value)
+```
+```karina
+2.sqrt() // 1.41421...
+```
+
+They can be defined on any type, including primitives. \
+The underlying function has to be in scope, so you might need to import it first.
+
+<br>
+
+# Enums
+
+Karina supports **Algebraic Data Types**, as a way to define a type with a fixed set of values. \
+\
+This `enum` does not behave like a Java enum, but more like enums in languages like Rust or Swift. \
+Coming from a Java background, think of them more like a sealed interface + record classes. 
+
+```karina
+enum AuthState {
+    Guest(name: string)
+    User(name: string, id: int, token: string)
+    
+    fn name(self) -> string
+}
+```
+\
+The Karina standard library provides the `Option` and `Result` enum. These Types can be written as `T?` and `R?E` respectively.
+
+<br>
+
+# Interfaces
+
+```karina
+interface ToStr {
+    fn toStr(self) -> string
+    fn toString(self) -> string = self.toStr() // default implementation
+    
+    impl Display // extends another interface
+}
+```
+
+To implement an interface, use the `impl` keyword.
+
+```karina
+struct User {
+    name: string
+    
+    impl ToStr {
+        fn toStr(self) -> string {
+            let name = self.name
+            'User{name=$name}'
+        }
+    }
+}
+```
+
+<br>
 
 # Expressions
 
-Main page: [Expressions](../expressions/expressions.md)
 
 
-Generally speaking, everything is a expression in Karina. This reduces less boilerplate code and makes the code more readable. 
+- Variables
+- If
+- Creating Enums and objects
+- String interpolation
+- Closures
+- Function calls
+- Unwrapping
+- Arrays
+- `using` expression
+- Cast
+- instance check
+- Literals
+- Statics and Paths
+- while, for, continue, break
+- Super calls
+- Throw
+
+<br>
+
+Generally speaking, everything is a expression in Karina.
 
 ```karina
 let counter = {
@@ -55,9 +223,7 @@ let counter = {
 }
 ```
 
-<br>
-
-There are way to many expressions to list them all here, but here are some of the most notable ones:
+### Examples
 
 ```karina
 fn option() -> Integer? {
@@ -97,81 +263,22 @@ list.forEach(fn(i) {
 In this example, we can see the type inference in action. Also note that the closure will automatically adapt to the type expected by the `forEach` method.
 
 
-# Structs
 
-Main page: [Structs](../types/structs.md)
+# Imports
 
-Structs are basicly java classes, but with a more lightweight syntax.
+Karina uses a hierarchical import system based on the file structure.
+Each file is a unit that can contain multiple structs, enums, interfaces and functions. \
 
 ```karina
-struct Person {
-    const JANE_DOE: Person = Person::create("Jane Doe")
+import org::example::mylib::MyStruct // import the MyStruct struct inside the mylib.krna file
+import org::example::mylib::* // import everything inside the mylib.krna file
+import org::example::mylib::MyEnum { Case1, Case2 }
+import org::example::mylib MyStaticFunctionOrField 
 
-    name: string
-    
-    // mutable value
-    age: mut int
-    
-    // method on the struct
-    fn setAge(self, newAge: int) {
-        self.newAge = newAge
-    }
-
-    // static method
-    fn create(name: string) -> Person = {
-        Person {
-            name: name,
-            age: 0
-        }
-    }
-
-
-    //interfaces
-    impl AutoCloseable {
-        fn close(self) {
-            // ...
-        }
-    }
-}
+// collision handling
+import java::util::List 
+import java::awt::List as AwtList // import the List class from java.awt and rename it to AwtList
 ```
 
-By default, each structs has a default constructor, for initializing all fields.
 
-Defining custom constructors and super classes is also possible, but not recommended:
-```karina
-@Super = {
-    type: type { java::lang::RuntimeException }
-}
-struct RuntimeError {
-    message: string
-    cause: Throwable?
-
-    fn (self, message: string, cause: Throwable?) {
-        super<java::lang::RuntimeException>(message, cause.nullable())
-    }
-}
-```
-
-<div class="note">
-
-> A default constructor will not be created if you define your own constructors.
-
-</div>
-
-</br>
-
-# Enums
-
-Main page: [Enums](../types/enums.md)
-
-Karina supports **Algebraic Data Types**, aka **enums**, as a way to define a type with a fixed set of values.
-
-The Karina standard library provides a number of useful enums, such as `Option` and `Result`.
-
-# Closures
-
-Main page: [Closures](../types/function.md)
-
-# Interfaces
-
-Main page: [Interfaces](../concepts/interfaces.md)
+You are only allowed to rename imports when there is a collision. The new name has to contain the original name as a substring.
