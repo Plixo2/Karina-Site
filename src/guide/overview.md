@@ -23,12 +23,12 @@ You can also find some examples in the [test](https://github.com/Plixo2/KarinaC/
 
 ### Table of Contents
 
-1. [Functions](#functions)
-2. [Expressions](#expressions)
-3. [Structs](#structs)
-4. [Enums](#enums)
-5. [Closures](#closures)
-6. [Interfaces](#interfaces)
+1. [Structs](#structs)
+2. [Functions](#functions)
+3. [Enums](#enums)
+4. [Interfaces](#interfaces)
+5. [Statics](#static-fields)
+6. [Expressions](#expressions)
 7. [Imports](#imports)
 
 # Structs
@@ -50,7 +50,7 @@ pub struct Vec2 {
     }
 }
 ```
-A default constructor and a `toString` method is automatically created. 
+A default constructor and a `toString` function are automatically created. 
 
 ```karina
 let v = Vec2 { x: 1.0, y: 1.5 }
@@ -59,7 +59,7 @@ println(v) // Vec2{x=1.0, y=1.5}
 
 Structs, Fields and Functions are private by default. Use the `pub` keyword to make them public.
 Fields are also immutable by default. Use the `mut` keyword to make them mutable.
-Local Variables are mutable by default. 
+
 
 <br>
 
@@ -163,6 +163,16 @@ The Karina standard library provides the `Option` and `Result` enum. These Types
 
 <br>
 
+# Static Fields
+
+You can define statics inside structs, enums and interfaces and on the top level.
+```karina
+static PI: double = 3.1415927
+```
+They are immutable and private by default. Use the `mut` and `pub` keywords to make them mutable and public.
+
+<br>
+
 # Interfaces
 
 ```karina
@@ -177,14 +187,11 @@ interface ToStr {
 To implement an interface, use the `impl` keyword.
 
 ```karina
-struct User {
+struct Thing {
     name: string
     
     impl ToStr {
-        fn toStr(self) -> string {
-            let name = self.name
-            'User{name=$name}'
-        }
+        fn toStr(self) -> string = self.toString()
     }
 }
 ```
@@ -193,76 +200,232 @@ struct User {
 
 # Expressions
 
+<details>
+<summary>Table of Contents</summary>
+
+- [Variables](#variables)
+- [Branching](#branching)
+- [Creating Enums and objects](#creating-enums-and-objects)
+- [String interpolation](#string-interpolation)
+- [Closures](#closures)
+- [Unwrapping](#unwrapping)
+- [Arrays](#arrays)
+- [try-with-resources](#try-with-resources)
+- [Cast](#cast)
+- [Instance check](#instance-check)
+- [Literals](#literals)
+- [Paths](#paths)
+- [while, for, continue, break](#while-for-continue-break)
+- [Super calls and custom constructors](#super-calls-and-custom-constructors)
+- [Throw](#throw)
+
+</details>
 
 
-- Variables
-- If
-- Creating Enums and objects
-- String interpolation
-- Closures
-- Function calls
-- Unwrapping
-- Arrays
-- `using` expression
-- Cast
-- instance check
-- Literals
-- Statics and Paths
-- while, for, continue, break
-- Super calls
-- Throw
-
-<br>
-
-Generally speaking, everything is a expression in Karina.
+## Variables
 
 ```karina
-let counter = {
-    let value: int = 0
-    if value > 0 { value } else { 0 }
+let name: string = "Karina" 
+```
+Local variables are always mutable. The type can be omitted if it can be inferred. 
+
+```karina
+let number = 0.5 // type is inferred as double
+```
+
+## Branching
+
+```karina
+if condition { 
+    //...
+} else if otherCondition {
+    //...
 }
 ```
 
-### Examples
+`if` expressions also supports pattern matching:
 
 ```karina
-fn option() -> Integer? {
-    //Closures
-    let getValue = fn() Option::Some { _: 1}
+let orElse = if value is Result::Ok r {
+    r.toString()
+} else is Result::Err e {
+    e.toString()
+}
+```
+As everything is an expression in Karina, `if` expressions can return a value
 
-    //Unwrapping
-    let opt = getValue().map(fn(s) String::valueOf(s))?
+## Creating Enums and objects
 
-    //if patterns
-    let other: string = if getValue().okOr("Error") is Result::Ok(v) {
-        //String interpolation
-        'Value: $v' 
-    } else is Result::Err(e) {
-        e
+```karina
+let opt = Option::Some { value: 1 }
+let lang = Language { _: "Karina" }
+```
+This constructs finds and calls the underlying constructors. 
+The name and order of the fields have to match the constructor, but you can use `_` to ignore the name of the field, mainly for working with Java classes.
+
+
+## String interpolation
+
+```karina
+let name = "Karina"
+let greeting = 'Hello, $name!'
+```
+
+String interpolation works with single quotes. \
+Use `$name` to insert a variable. Complex expressions are not supported... yet.
+
+## Closures
+
+Closures are both a type and a expression.
+
+```karina
+let add = fn(a: int, b: int) -> int { a + b }
+add(1, 2) // 3
+```
+
+Parameter types and return types can be omitted if they can be inferred.
+\
+\
+Closures compile to interfaces. You can explicitly define the interfaces a closure implements.
+
+```karina
+fn () -> string impl Callable<string>, Supplier<string>
+```
+
+## Unwrapping
+
+The `?` operator can be used to unwrap an `Option` or `Result`. If the value is `None` or `Err`, the function will return early.
+
+```karina
+fn trim(opt: string?) -> string? {
+    let trimmed = opt?.trim()
+    Option::some(trimmed)
+}
+```
+
+## Arrays
+
+Arrays are created using square brackets.
+
+```karina
+let arr = [1, 2, 3]
+```
+
+You can also give it a type explicitly.
+
+```karina
+let arr = <int>[1, 2, 3]
+```
+
+Creating empty arrays it not supported. Use functions in the `karina::lang::Values` and `karina::lang::Option` namespaces instead.
+
+## try-with-resources
+
+```karina
+using stream = Files::createStream(path)? {
+    // ...
+}
+```
+
+The `using` expression automatically closes the resource when it goes out of scope. The resource has to implement the `AutoCloseable` interface.
+
+## Cast
+```karina
+10.0 as int // cast double to int
+```
+
+Casting is only allowed between primitives and types that can be safely casted.
+
+Use `Option::instanceOf(class, value)` for safe casting.
+
+## Instance check
+
+```karina
+let isObject = value is MyClass 
+```
+
+## Literals
+
+All JVM primitive are supported: `int`, `long`, `float`, `double`, `byte`, `short`, `char` and `bool`. 
+
+Numbers can be written using decimal, hexadecimal and binary notation.
+```karina
+0x1A // hexadecimal
+0b1101 // binary
+1_000_000 // underscores are ignored
+```
+
+
+
+String literals can be written using double quotes.
+```karina
+let str = "Hello, World!"
+```
+
+Characters can be written using single quotes.
+```karina
+let char = 'A'
+```
+
+Be aware that single quotes are used for characters and string interpolation. 
+
+Strings, String interpolation and Characters support escape sequences like `\n`, `\t`, `\\`, `\'` and `\"` and even unicode characters like `\u03A9` (Ω)
+
+
+## Paths
+
+Paths are written using `::` as a separator, for types, static fields and functions.
+```karina
+let path = org::example::MyClass::MY_STATIC
+```
+
+## while, for, continue, break
+
+`while`, `for`, `continue` and `break` work as expected.
+
+```karina
+while true {
+    if false {
+        break
+    } else {
+        continue
     }
-
-    // Object creation
-    Option::OK { 
-        //Boxing & Unboxing
-        value: Integer::valueOf("123") + 1
-    }        
 }
 ```
-<br>
 
-Using Java features is exactly the same as using Karina features. 
+Yielding values from loops is not supported... yet.
+
+## Super calls and custom constructors
 
 ```karina
-let list = java::util::ArrayList{}
-list.add(1)
-
-list.forEach(fn(i) {
-    println(i)
-})
+struct Thing {
+    name: string
+    fn (self) {
+        super<Object>()
+        self.name = "Thing"
+    }
+}
 ```
-In this example, we can see the type inference in action. Also note that the closure will automatically adapt to the type expected by the `forEach` method.
+You can define a custom constructor by defining a member function without a name. \
+Be aware that if you define a custom constructor, the default constructor will not be generated and you have to call a super constructor manually.
 
+<div class="warning">
+Super calls are not yet checked for correctness, so this might lead to runtime errors.
+</div>
 
+## Throw
+
+```karina
+throw java::io::IOException { message: "File not found" }
+```
+
+The `throw` expression can be used to throw exceptions. These have to extend `java.lang.Throwable`.
+
+I would advise against using exceptions for control flow. Use the `Option` and `Result` types instead. 
+
+The `Result::safeCall*` functions can be used to convert exceptions into `Result::Err` values.
+
+<br>
 
 # Imports
 
@@ -279,6 +442,5 @@ import org::example::mylib MyStaticFunctionOrField
 import java::util::List 
 import java::awt::List as AwtList // import the List class from java.awt and rename it to AwtList
 ```
-
 
 You are only allowed to rename imports when there is a collision. The new name has to contain the original name as a substring.

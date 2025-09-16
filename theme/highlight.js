@@ -64,11 +64,14 @@ hljs.registerLanguage("karina", function () {
             name: "Karina",
             aliases: ["krna"],
             keywords: {
-                keyword: "any type fn is  in  as null import extends extend match override native true false virtual break return yield struct static throw trait macro impl enum class let i const els while fo super public pub where using interface self int mut long byte char double short string float bool void continue",
+                keyword: "any type fn is in as null import extends extend match override native true false virtual break return yield struct static throw trait macro impl enum class let if const else while for super public pub where using interface self int mut long byte char double short string float bool void continue",
                 built_in: "double string long short byte bool short char int void"
             },
             contains: [
-                hljs.NUMBER_MODE,
+                { className: "number", begin: "\\b0[bB][01][01_]*[01]", relevance: 0 },
+                { className: "number", begin: "\\b0[xX][0-9A-Fa-f][0-9A-Fa-f_]*[0-9A-Fa-f]", relevance: 0 },
+                { className: "number", begin: "\\b\\d[\\d_]*(\\.\\d[\\d_]*)?", relevance: 0 },
+                { className: "number", begin: "\\b\\d[\\d_]*(?:\\.\\d[\\d_]*)?[eE][+-]?\\d[\\d_]*", relevance: 0 },
                 hljs.C_LINE_COMMENT_MODE,
                 hljs.QUOTE_STRING_MODE,
                 hljs.APOS_STRING_MODE,
