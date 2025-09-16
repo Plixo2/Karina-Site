@@ -18,7 +18,7 @@
 
 - Create a new folder called `src` in your workspace and create a `main.krna` file in it with the following content:
   ```karina
-  fn main(args: [string]) {
+  pub fn main(args: [string]) {
       println("Hello, World!")
   }
   ```
