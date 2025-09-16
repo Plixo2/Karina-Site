@@ -137,84 +137,36 @@
     
        
         <div class="text-6xl title-font mb-4">Karina</div>    
-        <div class="non-select text-2xl keyword-font mb-10 text-neutral-500">Modern. Concise. Interoperable.</div>    
-        <!-- <div class="flex flex-col items-start mb-20 w-96"> -->
-            <!-- <div class="flex h-20 w-full items-center">
-                <div class="text-6xl title-font mr-4 non-select">IS</div>  
-            
-                <div class="h-20 w-screen">
-                  <div class="keyword-font text-6xl non-select text-nowrap text-red-600 h-20 w-full overflow-y-hidden">
-                    <div id="word1" class="h-20 text-start flex items-center">Creative</div>
-                    <div id="word2" class="h-20 text-start flex items-center">Fast</div>
-                    <div id="word3" class="h-20 text-start flex items-center">Intuitive</div>
-                  </div>
-                </div>
-            
-              </div>   -->
-        <!-- </div> -->
-        
-
-        
-<!-- 
-        <script>
-            const keywords = [
-                "Fun",
-                "Modern",
-                "Safe", 
-                "Fast",
-                "Interoperable", 
-                "Simple", 
-                "Dynamic", 
-                "2025",
-                "Open Source", 
-                "Community Driven", 
-                "JVM",
-                "Staticly Typed",
-                "Safe"
-            ];
-            const words = [document.getElementById("word1"), document.getElementById("word2"), document.getElementById("word3")];
-            let index = Math.floor(Math.random() * 100); // Random start index
-
-            function showNextWord() {
-                for (let i = 0; i < words.length; i++) {
-                    const word = words[i];
-                    word.classList.remove("slide-word"); // Remove animation class
-                    word.textContent = keywords[(index + i) % keywords.length]; // Set new word
-                    void word.offsetWidth; // Trigger reflow to restart animation
-                    word.classList.add("slide-word"); // Add animation class back
-                }
-                index = (index + 1) % keywords.length;
-            }
-
-            showNextWord(); // Show the first word
-            setInterval(showNextWord, 4000); // Change every 2s
-        </script> -->
+        <div class="non-select text-2xl keyword-font mb-10 text-neutral-500">Modern. Concise. Interoperable.</div>
 
         <div class="non-select">
             <a href="/guide/hello.html" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 mx-4 bg-neutral-300 text-black font-semibold  hover:bg-neutral-500 px-4 py-2 rounded-xl transition">
+                class="inline-flex items-center gap-2 mx-4 bg-neutral-300 text-black border-2 font-semibold hover:bg-neutral-500 px-4 py-2 rounded-xl transition">
                 <img src="book.svg" alt="Logo" class="h-5 w-5" />
                 Get Started
-
             </a>
             <a href="https://github.com/Plixo2/KarinaC" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 mx-4 bg-black border-neutral-800 border-2 hover:bg-neutral-800 text-white px-4 py-2 rounded-xl transition">
+                class="inline-flex items-center gap-2 mx-4 bg-black border-neutral-800 border-2 hover:bg-neutral-800 text-white px-3 py-2 rounded-xl transition">
                 <img src="github.svg" alt="Logo" class="h-5 w-5 invert" />
                 Source Code
             </a>
-
+            <a href="https://marketplace.visualstudio.com/items?itemName=karina.karina-lsp" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 mx-4 bg-black border-neutral-800 border-2 hover:bg-neutral-800 text-white px-6 py-2 rounded-xl transition">
+                <img src="VSCode.svg" alt="Logo" class="h-5 w-5" />
+                Extension
+            </a>
         
         </div>
     </div>
-        <!-- <div class="mt-10 text-neutral-500 flex-row flex items-center justify-center">
+         <div class="mt-10 text-neutral-500 flex-row flex items-center justify-center">
             <div>
-                Developed by 
+                Developed by
             </div>
-            <a href="https://github.com/Plixo2" class="ml-3 p-1 title-font text-white flex-row rounded-lg flex items-center justify-center bg-neutral-900">
-                <img src="pfp.png" alt="Logo" class=" mr-2 h-7 w-7 rounded-full object-cover" />
+            <a href="https://github.com/Plixo2" class="ml-3 p-1 title-font text-white flex-row rounded-lg flex items-center justify-center bg-[#1f1e1f] px-2">
+                <img src="pfp.png" alt="Logo" class="mr-2 h-6 w-6 rounded-full object-cover" />
                 Plixo
             </a>
-        </div> -->
+        </div>
 
     </section>
 
